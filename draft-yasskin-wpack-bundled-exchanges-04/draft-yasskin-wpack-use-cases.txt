@@ -4,8 +4,8 @@
 
 Network Working Group                                         J. Yasskin
 Internet-Draft                                                    Google
-Intended status: Informational                           27 January 2021
-Expires: 31 July 2021
+Intended status: Informational                              8 March 2021
+Expires: 9 September 2021
 
 
               Use Cases and Requirements for Web Packages
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 July 2021.
+   This Internet-Draft will expire on 9 September 2021.
 
 Copyright Notice
 
@@ -973,47 +973,47 @@ Table of Contents
    [I-D.burke-content-signature]
               Burke, B., "HTTP Header for digital signatures", Work in
               Progress, Internet-Draft, draft-burke-content-signature-
-              00, 7 March 2011, <http://www.ietf.org/internet-drafts/
+              00, 7 March 2011, <https://datatracker.ietf.org/doc/html/
               draft-burke-content-signature-00.txt>.
 
    [I-D.cavage-http-signatures]
               Cavage, M. and M. Sporny, "Signing HTTP Messages", Work in
               Progress, Internet-Draft, draft-cavage-http-signatures-12,
-              21 October 2019, <http://www.ietf.org/internet-drafts/
+              21 October 2019, <https://datatracker.ietf.org/doc/html/
               draft-cavage-http-signatures-12.txt>.
 
    [I-D.ietf-httpbis-cache-digest]
               Oku, K. and Y. Weiss, "Cache Digests for HTTP/2", Work in
               Progress, Internet-Draft, draft-ietf-httpbis-cache-digest-
-              05, 2 July 2018, <http://www.ietf.org/internet-drafts/
+              05, 2 July 2018, <https://datatracker.ietf.org/doc/html/
               draft-ietf-httpbis-cache-digest-05.txt>.
 
    [I-D.ietf-httpbis-http2-secondary-certs]
               Bishop, M., Sullivan, N., and M. Thomson, "Secondary
               Certificate Authentication in HTTP/2", Work in Progress,
               Internet-Draft, draft-ietf-httpbis-http2-secondary-certs-
-              06, 14 May 2020, <http://www.ietf.org/internet-drafts/
+              06, 14 May 2020, <https://datatracker.ietf.org/doc/html/
               draft-ietf-httpbis-http2-secondary-certs-06.txt>.
 
    [I-D.thomson-http-content-signature]
               Thomson, M., "Content-Signature Header Field for HTTP",
               Work in Progress, Internet-Draft, draft-thomson-http-
-              content-signature-00, 2 July 2015, <http://www.ietf.org/
-              internet-drafts/draft-thomson-http-content-signature-
-              00.txt>.
+              content-signature-00, 2 July 2015,
+              <https://datatracker.ietf.org/doc/html/draft-thomson-http-
+              content-signature-00.txt>.
 
    [I-D.vkrasnov-h2-compression-dictionaries]
               Krasnov, V. and Y. Weiss, "Compression Dictionaries for
               HTTP/2", Work in Progress, Internet-Draft, draft-vkrasnov-
               h2-compression-dictionaries-03, 5 March 2018,
-              <http://www.ietf.org/internet-drafts/draft-vkrasnov-h2-
+              <https://datatracker.ietf.org/doc/html/draft-vkrasnov-h2-
               compression-dictionaries-03.txt>.
 
    [I-D.yasskin-dispatch-web-packaging]
               Yasskin, J., "Web Packaging", Work in Progress, Internet-
               Draft, draft-yasskin-dispatch-web-packaging-00, 30 June
-              2017, <http://www.ietf.org/internet-drafts/draft-yasskin-
-              dispatch-web-packaging-00.txt>.
+              2017, <https://datatracker.ietf.org/doc/html/draft-
+              yasskin-dispatch-web-packaging-00.txt>.
 
    [ISO28500] "WARC file format", ISO 28500:2017, 2017,
               <https://www.iso.org/standard/68004.html>.
@@ -1025,33 +1025,33 @@ Table of Contents
    [MHTML]    Palme, J., Hopmann, A., and N. Shelness, "MIME
               Encapsulation of Aggregate Documents, such as HTML
               (MHTML)", RFC 2557, DOI 10.17487/RFC2557, March 1999,
-              <https://www.rfc-editor.org/info/rfc2557>.
+              <https://datatracker.ietf.org/doc/html/rfc2557>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
+              <https://datatracker.ietf.org/doc/html/rfc6454>.
 
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
-              <https://www.rfc-editor.org/info/rfc6797>.
+              <https://datatracker.ietf.org/doc/html/rfc6797>.
 
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
-              <https://www.rfc-editor.org/info/rfc6962>.
+              <https://datatracker.ietf.org/doc/html/rfc6962>.
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
-              2015, <https://www.rfc-editor.org/info/rfc7469>.
+              2015, <https://datatracker.ietf.org/doc/html/rfc7469>.
 
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <https://www.rfc-editor.org/info/rfc7515>.
+              2015, <https://datatracker.ietf.org/doc/html/rfc7515>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
-              <https://www.rfc-editor.org/info/rfc7540>.
+              <https://datatracker.ietf.org/doc/html/rfc7540>.
 
    [ServiceWorkers]
               "Service Workers Nightly", W3C ED,

@@ -4,8 +4,8 @@
 
 Network Working Group                                         J. Yasskin
 Internet-Draft                                                    Google
-Intended status: Standards Track                         27 January 2021
-Expires: 31 July 2021
+Intended status: Standards Track                            8 March 2021
+Expires: 9 September 2021
 
 
                               Web Bundles
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 July 2021.
+   This Internet-Draft will expire on 9 September 2021.
 
 Copyright Notice
 
@@ -233,7 +233,7 @@ Table of Contents
    content of the bundle and are defined in Section 4.2.  The "section-
    lengths" array is embedded in a byte string to facilitate reading it
    from a network.  This byte string MUST be less than 8192 (8*1024)
-   bytes long, and parsers MUST not load any data from a "section-
+   bytes long, and parsers MUST NOT load any data from a "section-
    lengths" item longer than this.
 
    The bundle ends with an 8-byte integer holding the length of the
@@ -294,7 +294,7 @@ Table of Contents
    version number.
 
    The ""responses"" section MUST appear after the other three sections
-   defined here, and parsers MUST not load any data if that is not the
+   defined here, and parsers MUST NOT load any data if that is not the
    case.
 
    The "sections" array contains the sections' content.  The length of
@@ -630,61 +630,60 @@ Table of Contents
               <https://www.w3.org/TR/2018/WD-appmanifest-20180523>.
 
    [CBORbis]  Bormann, C. and P. Hoffman, "Concise Binary Object
-              Representation (CBOR)", Work in Progress, Internet-Draft,
-              draft-ietf-cbor-7049bis-16, 30 September 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-cbor-
-              7049bis-16.txt>.
+              Representation (CBOR)", STD 94, RFC 8949,
+              DOI 10.17487/RFC8949, December 2020,
+              <https://datatracker.ietf.org/doc/html/rfc8949>.
 
    [CDDL]     Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
               Express Concise Binary Object Representation (CBOR) and
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
-              June 2019, <https://www.rfc-editor.org/info/rfc8610>.
+              June 2019,
+              <https://datatracker.ietf.org/doc/html/rfc8610>.
 
-   [FETCH]    WHATWG, "Fetch", January 2021,
+   [FETCH]    WHATWG, "Fetch", March 2021,
               <https://fetch.spec.whatwg.org/>.
 
    [I-D.ietf-httpbis-semantics]
-              Fielding, R., Nottingham, M., and J. Reschke, "HTTP
+              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-semantics-14, 12 January 2021,
-              <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               semantics-14.txt>.
 
    [I-D.ietf-httpbis-variants]
               Nottingham, M., "HTTP Representation Variants", Work in
               Progress, Internet-Draft, draft-ietf-httpbis-variants-06,
-              3 November 2019, <http://www.ietf.org/internet-drafts/
+              3 November 2019, <https://datatracker.ietf.org/doc/html/
               draft-ietf-httpbis-variants-06.txt>.
 
    [IANA.media-types]
               IANA, "Media Types",
               <http://www.iana.org/assignments/media-types>.
 
-   [INFRA]    WHATWG, "Infra", January 2021,
+   [INFRA]    WHATWG, "Infra", March 2021,
               <https://infra.spec.whatwg.org/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://datatracker.ietf.org/doc/html/rfc2119>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
-              <https://www.rfc-editor.org/info/rfc5234>.
+              <https://datatracker.ietf.org/doc/html/rfc5234>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
-              <https://www.rfc-editor.org/info/rfc7540>.
+              <https://datatracker.ietf.org/doc/html/rfc7540>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
-   [URL]      WHATWG, "URL", January 2021,
-              <https://url.spec.whatwg.org/>.
+   [URL]      WHATWG, "URL", March 2021, <https://url.spec.whatwg.org/>.
 
 7.2.  Informative References
 
@@ -692,8 +691,8 @@ Table of Contents
               Yasskin, J., "Use Cases and Requirements for Web
               Packages", Work in Progress, Internet-Draft, draft-
               yasskin-wpack-use-cases-01, 27 July 2020,
-              <http://www.ietf.org/internet-drafts/draft-yasskin-wpack-
-              use-cases-01.txt>.
+              <https://datatracker.ietf.org/doc/html/draft-yasskin-
+              wpack-use-cases-01.txt>.
 
 Appendix A.  Change Log
 

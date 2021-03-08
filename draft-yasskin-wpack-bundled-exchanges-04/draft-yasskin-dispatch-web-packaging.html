@@ -17,13 +17,13 @@ authenticity.
   xml2rfc 3.5.0
     Python 3.7.1
     appdirs 1.4.4
-    ConfigArgParse 1.2.3
+    ConfigArgParse 1.3
     google-i18n-address 2.4.0
     html5lib 1.1
     intervaltree 3.1.0
-    Jinja2 2.11.2
+    Jinja2 2.11.3
     kitchen 1.2.6
-    lxml 4.5.2
+    lxml 4.6.2
     pycountry 20.7.3
     pyflakes 2.2.0
     PyYAML 5.4.1
@@ -838,11 +838,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Web Packaging</td>
-<td class="right">January 2021</td>
+<td class="right">March 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Yasskin</td>
-<td class="center">Expires 31 July 2021</td>
+<td class="center">Expires 9 September 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -855,12 +855,12 @@ address div.right {
 <dd class="internet-draft">draft-yasskin-dispatch-web-packaging</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-01-27" class="published">27 January 2021</time>
+<time datetime="2021-03-08" class="published">8 March 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-07-31">31 July 2021</time></dd>
+<dd class="expires"><time datetime="2021-09-09">9 September 2021</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -907,7 +907,7 @@ authenticity.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 31 July 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 September 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1112,8 +1112,8 @@ parsers are required to successfully parse some byte strings that aren't valid
 CBOR. For example, sections may have padding between them, or even overlap, as
 long as the embedded relative offsets cause the parsing algorithm in this
 specification to return data.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.2-2">
-<pre>
+<div id="section-2.2-2">
+<pre class="sourcecode lang-cddl">
 webpackage = [
   ; 🌐📦 in UTF-8.
   magic1: h'F0 9F 8C 90 F0 9F 93 A6',
@@ -1145,8 +1145,8 @@ loading from a stream.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 <span>[<a href="#CDDL" class="xref">CDDL</a>]</span> group in array context: 
   <span class="cref" id="ednote-loading-cddl">CDDL doesn't actually define how to use it as a schema
 to load CBOR data.<span class="crefSource">jyasskin</span></span><a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.2.1-2">
-<pre>
+<div id="section-2.2.1-2">
+<pre class="sourcecode lang-cddl">
 tail = (
   ; Total number of bytes in the package.
   length: uint,
@@ -1172,8 +1172,8 @@ a <span><a href="#from-start" class="xref">from the beginning</a> (<a href="#fro
 followed by &amp;#127760;&amp;#128230; in UTF-8), parsing MUST fail.<a href="#section-2.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.2.2-2">Parse one CBOR item starting at the 11th byte of the package. If this does not
 match the CDDL<a href="#section-2.2.2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.2.2-3">
-<pre>
+<div id="section-2.2.2-3">
+<pre class="sourcecode lang-cddl">
 section-offsets = { * tstr =&gt; uint },
 </pre><a href="#section-2.2.2-3" class="pilcrow">¶</a>
 </div>
@@ -1216,8 +1216,8 @@ following:<a href="#section-2.3-2" class="pilcrow">¶</a></p>
 <p id="section-2.3-3">If the byte at <em>index-start</em> is not 0x82 (the <span>[<a href="#CBOR" class="xref">CBOR</a>]</span> header for a 2-element
 array), the parser MUST fail.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
 <p id="section-2.3-4">Load a CBOR item starting at <em>index-start</em> + 1 as the <code>index</code> array in the following CDDL:<a href="#section-2.3-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.3-5">
-<pre>
+<div id="section-2.3-5">
+<pre class="sourcecode lang-cddl">
 index = [* [resource-key: http-headers,
             offset: uint,
             ? length: uint] ]
@@ -1282,8 +1282,8 @@ renaming it to something like "authenticity".<span class="crefSource">jyasskin</
 <p id="section-2.4-2">To parse a manifest starting at <em>manifest-start</em>, a parser MUST do the following:<a href="#section-2.4-2" class="pilcrow">¶</a></p>
 <p id="section-2.4-3">Load one CBOR item starting at <em>manifest-start</em> as a <code>signed-manifest</code> from the
 following CDDL:<a href="#section-2.4-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.4-4">
-<pre>
+<div id="section-2.4-4">
+<pre class="sourcecode lang-cddl">
 signed-manifest = {
   manifest: manifest,
   certificates: [+ certificate],
@@ -1400,8 +1400,8 @@ as described in the <span>[<a href="#appmanifest" class="xref">appmanifest</a>]<
 a <a href="#resource" class="xref">Section 2.5</a> within the <code>indexed-content</code> section. The sub-package's
 resources are not otherwise distinguished from the rest of the resources in the
 package. Sub-packages can form an arbitrarily-deep tree.<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.4.1-2">
-<pre>
+<div id="section-2.4.1-2">
+<pre class="sourcecode lang-cddl">
 subpackage = [
   resource: resource-key,
   validation: {
@@ -1419,8 +1419,8 @@ downgrade attacks, where the sub-package is replaced by an older, vulnerable
 version, so we don't allow this option.<a href="#section-2.4.1-3" class="pilcrow">¶</a></p>
 <p id="section-2.4.1-4">If the main package wants to load either the sub-package it was built with or
 any upgrade, it can specify the date of the original sub-package:<a href="#section-2.4.1-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cbor-diag" id="section-2.4.1-5">
-<pre>
+<div id="section-2.4.1-5">
+<pre class="sourcecode lang-cbor-diag">
 [32("https://example.com/loginsdk.package"),
  {"notbefore": 1(1486429554)}]
 </pre><a href="#section-2.4.1-5" class="pilcrow">¶</a>
@@ -1431,8 +1431,8 @@ different times.<a href="#section-2.4.1-6" class="pilcrow">¶</a></p>
 <p id="section-2.4.1-7">If the main package wants to be certain it's loading the exact version
 of a sub-package that it was built with, it can constrain the sub-package
 with a hash of its manifest:<a href="#section-2.4.1-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cbor-diag" id="section-2.4.1-8">
-<pre>
+<div id="section-2.4.1-8">
+<pre class="sourcecode lang-cbor-diag">
 [32("https://example.com/loginsdk.package"),
  {"hash": {"sha256":
      b64'9qg0NGDuhsjeGwrcbaxMKZAvfzAHJ2d8L7NkDzXhgHk='}}]
@@ -1442,8 +1442,8 @@ with a hash of its manifest:<a href="#section-2.4.1-7" class="pilcrow">¶</a></p
 package may need to explicitly list those sub-sub-packages' hashes in order to
 be completely constrained. For example, if <code>loginsdk.package</code> has subpackages
 of the form:<a href="#section-2.4.1-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cbor-diag" id="section-2.4.1-10">
-<pre>
+<div id="section-2.4.1-10">
+<pre class="sourcecode lang-cbor-diag">
 [
   [32("https://other.example.com/helper.package"),
    {"notbefore": 1(1486429554)}]
@@ -1451,8 +1451,8 @@ of the form:<a href="#section-2.4.1-9" class="pilcrow">¶</a></p>
 </pre><a href="#section-2.4.1-10" class="pilcrow">¶</a>
 </div>
 <p id="section-2.4.1-11">the top-level package needs to specify:<a href="#section-2.4.1-11" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cbor-diag" id="section-2.4.1-12">
-<pre>
+<div id="section-2.4.1-12">
+<pre class="sourcecode lang-cbor-diag">
 [
   [32("https://example.com/loginsdk.package"),
    {"hash": {"sha256":
@@ -1479,8 +1479,8 @@ parser MUST do the following:<a href="#section-2.5-1" class="pilcrow">¶</a></p>
 <em>resource-key</em> is the same as <em>header-list</em>. If no such triple exists, the
 parser MUST fail.<a href="#section-2.5-2" class="pilcrow">¶</a></p>
 <p id="section-2.5-3">Parse one CBOR item starting at <em>offset</em> as the following CDDL:<a href="#section-2.5-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.5-4">
-<pre>
+<div id="section-2.5-4">
+<pre class="sourcecode lang-cddl">
 response = [response-headers: http-headers, body: bstr]
 </pre><a href="#section-2.5-4" class="pilcrow">¶</a>
 </div>
@@ -1516,8 +1516,8 @@ following CDDL schema:
   <span class="cref" id="ednote-figure-in-list">This step would be inside the manifest-only block, but
 then the code block is rendered out-of-order.<span class="crefSource">jyasskin</span></span><a href="#section-2.5-10" class="pilcrow">¶</a></p>
 </div>
-<div class="artwork art-text alignLeft art-cddl" id="section-2.5-11">
-<pre>
+<div id="section-2.5-11">
+<pre class="sourcecode lang-cddl">
 resource-bytes = [
   request: [
     *(header-name: bstr, header-value: bstr)
@@ -1686,47 +1686,47 @@ The IESG <a href="mailto:iesg@ietf.org">iesg@ietf.org</a><a href="#section-5.1-2
 <dd class="break"></dd>
 <dt id="CBOR">[CBOR]</dt>
         <dd>
-<span class="refAuthor">Bormann, C.</span><span class="refAuthor"> and P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">RFC 7049</span>, <span class="seriesInfo">DOI 10.17487/RFC7049</span>, <time datetime="2013-10" class="refDate">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7049">https://www.rfc-editor.org/info/rfc7049</a>&gt;</span>. </dd>
+<span class="refAuthor">Bormann, C.</span><span class="refAuthor"> and P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">RFC 7049</span>, <span class="seriesInfo">DOI 10.17487/RFC7049</span>, <time datetime="2013-10" class="refDate">October 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7049">https://datatracker.ietf.org/doc/html/rfc7049</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="CDDL">[CDDL]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span><span class="refAuthor">, Vigano, C.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"Concise data definition language (CDDL): a notational convention to express CBOR data structures"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-greevenbosch-appsawg-cbor-cddl-11</span>, <time datetime="2017-07-03" class="refDate">3 July 2017</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-greevenbosch-appsawg-cbor-cddl-11.txt">http://www.ietf.org/internet-drafts/draft-greevenbosch-appsawg-cbor-cddl-11.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span><span class="refAuthor">, Vigano, C.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"Concise data definition language (CDDL): a notational convention to express CBOR data structures"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-greevenbosch-appsawg-cbor-cddl-11</span>, <time datetime="2017-07-03" class="refDate">3 July 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-greevenbosch-appsawg-cbor-cddl-11.txt">https://datatracker.ietf.org/doc/html/draft-greevenbosch-appsawg-cbor-cddl-11.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="HPACK">[HPACK]</dt>
         <dd>
-<span class="refAuthor">Peon, R.</span><span class="refAuthor"> and H. Ruellan</span>, <span class="refTitle">"HPACK: Header Compression for HTTP/2"</span>, <span class="seriesInfo">RFC 7541</span>, <span class="seriesInfo">DOI 10.17487/RFC7541</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7541">https://www.rfc-editor.org/info/rfc7541</a>&gt;</span>. </dd>
+<span class="refAuthor">Peon, R.</span><span class="refAuthor"> and H. Ruellan</span>, <span class="refTitle">"HPACK: Header Compression for HTTP/2"</span>, <span class="seriesInfo">RFC 7541</span>, <span class="seriesInfo">DOI 10.17487/RFC7541</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7541">https://datatracker.ietf.org/doc/html/rfc7541</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="HTTP2">[HTTP2]</dt>
         <dd>
-<span class="refAuthor">Belshe, M.</span><span class="refAuthor">, Peon, R.</span><span class="refAuthor">, and M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7540">https://www.rfc-editor.org/info/rfc7540</a>&gt;</span>. </dd>
+<span class="refAuthor">Belshe, M.</span><span class="refAuthor">, Peon, R.</span><span class="refAuthor">, and M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7540">https://datatracker.ietf.org/doc/html/rfc7540</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2818">[RFC2818]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"HTTP Over TLS"</span>, <span class="seriesInfo">RFC 2818</span>, <span class="seriesInfo">DOI 10.17487/RFC2818</span>, <time datetime="2000-05" class="refDate">May 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2818">https://www.rfc-editor.org/info/rfc2818</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"HTTP Over TLS"</span>, <span class="seriesInfo">RFC 2818</span>, <span class="seriesInfo">DOI 10.17487/RFC2818</span>, <time datetime="2000-05" class="refDate">May 2000</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2818">https://datatracker.ietf.org/doc/html/rfc2818</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5280">[RFC5280]</dt>
         <dd>
-<span class="refAuthor">Cooper, D.</span><span class="refAuthor">, Santesson, S.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Boeyen, S.</span><span class="refAuthor">, Housley, R.</span><span class="refAuthor">, and W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5280">https://www.rfc-editor.org/info/rfc5280</a>&gt;</span>. </dd>
+<span class="refAuthor">Cooper, D.</span><span class="refAuthor">, Santesson, S.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Boeyen, S.</span><span class="refAuthor">, Housley, R.</span><span class="refAuthor">, and W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc5280">https://datatracker.ietf.org/doc/html/rfc5280</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6454">[RFC6454]</dt>
         <dd>
-<span class="refAuthor">Barth, A.</span>, <span class="refTitle">"The Web Origin Concept"</span>, <span class="seriesInfo">RFC 6454</span>, <span class="seriesInfo">DOI 10.17487/RFC6454</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6454">https://www.rfc-editor.org/info/rfc6454</a>&gt;</span>. </dd>
+<span class="refAuthor">Barth, A.</span>, <span class="refTitle">"The Web Origin Concept"</span>, <span class="seriesInfo">RFC 6454</span>, <span class="seriesInfo">DOI 10.17487/RFC6454</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6960">[RFC6960]</dt>
         <dd>
-<span class="refAuthor">Santesson, S.</span><span class="refAuthor">, Myers, M.</span><span class="refAuthor">, Ankney, R.</span><span class="refAuthor">, Malpani, A.</span><span class="refAuthor">, Galperin, S.</span><span class="refAuthor">, and C. Adams</span>, <span class="refTitle">"X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP"</span>, <span class="seriesInfo">RFC 6960</span>, <span class="seriesInfo">DOI 10.17487/RFC6960</span>, <time datetime="2013-06" class="refDate">June 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6960">https://www.rfc-editor.org/info/rfc6960</a>&gt;</span>. </dd>
+<span class="refAuthor">Santesson, S.</span><span class="refAuthor">, Myers, M.</span><span class="refAuthor">, Ankney, R.</span><span class="refAuthor">, Malpani, A.</span><span class="refAuthor">, Galperin, S.</span><span class="refAuthor">, and C. Adams</span>, <span class="refTitle">"X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP"</span>, <span class="seriesInfo">RFC 6960</span>, <span class="seriesInfo">DOI 10.17487/RFC6960</span>, <time datetime="2013-06" class="refDate">June 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6960">https://datatracker.ietf.org/doc/html/rfc6960</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7231">[RFC7231]</dt>
         <dd>
-<span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+<span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7231">https://datatracker.ietf.org/doc/html/rfc7231</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SRI">[SRI]</dt>
         <dd>
@@ -1734,7 +1734,7 @@ The IESG <a href="mailto:iesg@ietf.org">iesg@ietf.org</a><a href="#section-5.1-2
 <dd class="break"></dd>
 <dt id="TLS1.3">[TLS1.3]</dt>
       <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-tls13-28</span>, <time datetime="2018-03-20" class="refDate">20 March 2018</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-tls-tls13-28.txt">http://www.ietf.org/internet-drafts/draft-ietf-tls-tls13-28.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-tls13-28</span>, <time datetime="2018-03-20" class="refDate">20 March 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls13-28.txt">https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls13-28.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1745,15 +1745,15 @@ The IESG <a href="mailto:iesg@ietf.org">iesg@ietf.org</a><a href="#section-5.1-2
 <dl class="references">
 <dt id="I-D.yasskin-wpack-use-cases">[I-D.yasskin-wpack-use-cases]</dt>
         <dd>
-<span class="refAuthor">Yasskin, J.</span>, <span class="refTitle">"Use Cases and Requirements for Web Packages"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-yasskin-wpack-use-cases-01</span>, <time datetime="2020-07-27" class="refDate">27 July 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-yasskin-wpack-use-cases-01.txt">http://www.ietf.org/internet-drafts/draft-yasskin-wpack-use-cases-01.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Yasskin, J.</span>, <span class="refTitle">"Use Cases and Requirements for Web Packages"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-yasskin-wpack-use-cases-01</span>, <time datetime="2020-07-27" class="refDate">27 July 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-yasskin-wpack-use-cases-01.txt">https://datatracker.ietf.org/doc/html/draft-yasskin-wpack-use-cases-01.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6838">[RFC6838]</dt>
         <dd>
-<span class="refAuthor">Freed, N.</span><span class="refAuthor">, Klensin, J.</span><span class="refAuthor">, and T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+<span class="refAuthor">Freed, N.</span><span class="refAuthor">, Klensin, J.</span><span class="refAuthor">, and T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6838">https://datatracker.ietf.org/doc/html/rfc6838</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7233">[RFC7233]</dt>
         <dd>
-<span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor">, Lafon, Y., Ed.</span><span class="refAuthor">, and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Range Requests"</span>, <span class="seriesInfo">RFC 7233</span>, <span class="seriesInfo">DOI 10.17487/RFC7233</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7233">https://www.rfc-editor.org/info/rfc7233</a>&gt;</span>. </dd>
+<span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor">, Lafon, Y., Ed.</span><span class="refAuthor">, and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Range Requests"</span>, <span class="seriesInfo">RFC 7233</span>, <span class="seriesInfo">DOI 10.17487/RFC7233</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7233">https://datatracker.ietf.org/doc/html/rfc7233</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ServiceWorkers">[ServiceWorkers]</dt>
       <dd>

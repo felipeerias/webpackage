@@ -5,7 +5,7 @@
 Network Working Group                                         J. Yasskin
 Internet-Draft                                               K. Sakamoto
 Intended status: Standards Track                                  Google
-Expires: 31 July 2021                                    27 January 2021
+Expires: 9 September 2021                                   8 March 2021
 
 
             Signed HTTP Exchanges Implementation Checkpoints
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 July 2021.
+   This Internet-Draft will expire on 9 September 2021.
 
 Copyright Notice
 
@@ -232,14 +232,14 @@ Table of Contents
    effective request URI "https://example.com/resource.html".  Newlines
    are added for readability.
 
-Signature:
- sig1;
-  sig=*MEUCIQDXlI2gN3RNBlgFiuRNFpZXcDIaUpX6HIEwcZEc0cZYLAIga9DsVOMM+g5YpwEBdGW3sS+bvnmAJJiSMwhuBdqp5UY=*;
-  integrity="digest/mi-sha256-03";
-  validity-url="https://example.com/resource.validity.1511128380";
-  cert-url="https://example.com/oldcerts";
-  cert-sha256=*W7uB969dFW3Mb5ZefPS9Tq5ZbH5iSmOILpjv2qEArmI=*;
-  date=1511128380; expires=1511733180
+   Signature:
+    sig1;
+     sig=*MEUCIQDXlI2gN3RNBlgFiuRNFpZXcDIaUpX6HIEwcZEc0cZYLAIga9DsVOMM+g5YpwEBdGW3sS+bvnmAJJiSMwhuBdqp5UY=*;
+     integrity="digest/mi-sha256-03";
+     validity-url="https://example.com/resource.validity.1511128380";
+     cert-url="https://example.com/oldcerts";
+     cert-sha256=*W7uB969dFW3Mb5ZefPS9Tq5ZbH5iSmOILpjv2qEArmI=*;
+     date=1511128380; expires=1511733180
 
    The signature uses a secp256r1 certificate within
    "https://example.com/".
@@ -296,11 +296,11 @@ Signature:
    The cbor representation consists of the following item, represented
    using the extended diagnostic notation from [CDDL] appendix G:
 
-  {
-    'digest': 'mi-sha256-03=dcRDgR2GM35DluAV13PzgnG6+pvQwPywfFvAu1UeFrs=',
-    ':status': '200',
-    'content-type': 'text/html'
-  }
+     {
+       'digest': 'mi-sha256-03=dcRDgR2GM35DluAV13PzgnG6+pvQwPywfFvAu1UeFrs=',
+       ':status': '200',
+       'content-type': 'text/html'
+     }
 
 3.3.  Loading a certificate chain
 
@@ -623,20 +623,20 @@ Signature:
    "validity-url" of "sig1") if it wishes to update that signature.
    This URL might contain:
 
-{
-  "signatures": [
-    'sig1; '
-    'sig=*MEQCIC/I9Q+7BZFP6cSDsWx43pBAL0ujTbON/+7RwKVk+ba5AiB3FSFLZqpzmDJ0NumNwN04pqgJZE99fcK86UjkPbj4jw==*; '
-    'validity-url="https://example.com/resource.validity.1511157180"; '
-    'integrity="digest/mi-sha256-03"; '
-    'cert-url="https://example.com/newcerts"; '
-    'cert-sha256=*J/lEm9kNRODdCmINbvitpvdYKNQ+YgBj99DlYp4fEXw=*; '
-    'date=1511733180; expires=1512337980'
-  ],
-  "update": {
-    "size": 5557452
-  }
-}
+   {
+     "signatures": [
+       'sig1; '
+       'sig=*MEQCIC/I9Q+7BZFP6cSDsWx43pBAL0ujTbON/+7RwKVk+ba5AiB3FSFLZqpzmDJ0NumNwN04pqgJZE99fcK86UjkPbj4jw==*; '
+       'validity-url="https://example.com/resource.validity.1511157180"; '
+       'integrity="digest/mi-sha256-03"; '
+       'cert-url="https://example.com/newcerts"; '
+       'cert-sha256=*J/lEm9kNRODdCmINbvitpvdYKNQ+YgBj99DlYp4fEXw=*; '
+       'date=1511733180; expires=1512337980'
+     ],
+     "update": {
+       "size": 5557452
+     }
+   }
 
    This indicates that the client could fetch a newer version at
    "https://example.com/resource" (the original URL of the exchange), or
@@ -854,8 +854,8 @@ Signature:
    This draft of the specification identifies the CanSignHttpExchanges
    extension with the id-ce-canSignHttpExchangesDraft OID:
 
-   id-ce-google OBJECT IDENTIFIER ::= { 1 3 6 1 4 1 11129 }
-   id-ce-canSignHttpExchangesDraft OBJECT IDENTIFIER ::= { id-ce-google 2 1 22 }
+      id-ce-google OBJECT IDENTIFIER ::= { 1 3 6 1 4 1 11129 }
+      id-ce-canSignHttpExchangesDraft OBJECT IDENTIFIER ::= { id-ce-google 2 1 22 }
 
    This OID might or might not be used as the final OID for the
    extension, so certificates including it might need to be reissued
@@ -1064,9 +1064,10 @@ Signature:
               Definition Language (CDDL): A Notational Convention to
               Express Concise Binary Object Representation (CBOR) and
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
-              June 2019, <https://www.rfc-editor.org/info/rfc8610>.
+              June 2019,
+              <https://datatracker.ietf.org/doc/html/rfc8610>.
 
-   [FETCH]    WHATWG, "Fetch", January 2021,
+   [FETCH]    WHATWG, "Fetch", March 2021,
               <https://fetch.spec.whatwg.org/>.
 
    [I-D.ietf-httpbis-header-structure-10]
@@ -1085,8 +1086,9 @@ Signature:
    [I-D.yasskin-http-origin-signed-responses]
               Yasskin, J., "Signed HTTP Exchanges", Work in Progress,
               Internet-Draft, draft-yasskin-http-origin-signed-
-              responses-09, 27 July 2020, <http://www.ietf.org/internet-
-              drafts/draft-yasskin-http-origin-signed-responses-09.txt>.
+              responses-09, 27 July 2020,
+              <https://datatracker.ietf.org/doc/html/draft-yasskin-http-
+              origin-signed-responses-09.txt>.
 
    [POSIX]    IEEE and The Open Group, "The Open Group Base
               Specifications Issue 7", name IEEE, value 1003.1-2008,
@@ -1097,77 +1099,78 @@ Signature:
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://datatracker.ietf.org/doc/html/rfc2119>.
 
    [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
-              <https://www.rfc-editor.org/info/rfc5234>.
+              <https://datatracker.ietf.org/doc/html/rfc5234>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/info/rfc5280>.
+              <https://datatracker.ietf.org/doc/html/rfc5280>.
 
    [RFC6844]  Hallam-Baker, P. and R. Stradling, "DNS Certification
               Authority Authorization (CAA) Resource Record", RFC 6844,
               DOI 10.17487/RFC6844, January 2013,
-              <https://www.rfc-editor.org/info/rfc6844>.
+              <https://datatracker.ietf.org/doc/html/rfc6844>.
 
    [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
               Galperin, S., and C. Adams, "X.509 Internet Public Key
               Infrastructure Online Certificate Status Protocol - OCSP",
               RFC 6960, DOI 10.17487/RFC6960, June 2013,
-              <https://www.rfc-editor.org/info/rfc6960>.
+              <https://datatracker.ietf.org/doc/html/rfc6960>.
 
    [RFC6962]  Laurie, B., Langley, A., and E. Kasper, "Certificate
               Transparency", RFC 6962, DOI 10.17487/RFC6962, June 2013,
-              <https://www.rfc-editor.org/info/rfc6962>.
+              <https://datatracker.ietf.org/doc/html/rfc6962>.
 
    [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
-              October 2013, <https://www.rfc-editor.org/info/rfc7049>.
+              October 2013,
+              <https://datatracker.ietf.org/doc/html/rfc7049>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://www.rfc-editor.org/info/rfc7230>.
+              <https://datatracker.ietf.org/doc/html/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
-              <https://www.rfc-editor.org/info/rfc7231>.
+              <https://datatracker.ietf.org/doc/html/rfc7231>.
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
               RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <https://www.rfc-editor.org/info/rfc7234>.
+              <https://datatracker.ietf.org/doc/html/rfc7234>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
    [TLS1.3]   Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
-              <https://www.rfc-editor.org/info/rfc8446>.
+              <https://datatracker.ietf.org/doc/html/rfc8446>.
 
-   [URL]      WHATWG, "URL", January 2021,
-              <https://url.spec.whatwg.org/>.
+   [URL]      WHATWG, "URL", March 2021, <https://url.spec.whatwg.org/>.
 
 9.2.  Informative References
 
    [I-D.ietf-httpbis-cache]
-              Fielding, R., Nottingham, M., and J. Reschke, "HTTP
+              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Caching", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-cache-14, 12 January 2021, <http://www.ietf.org/
-              internet-drafts/draft-ietf-httpbis-cache-14.txt>.
+              httpbis-cache-14, 12 January 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              cache-14.txt>.
 
    [I-D.thomson-http-mice]
               Thomson, M. and J. Yasskin, "Merkle Integrity Content
               Encoding", Work in Progress, Internet-Draft, draft-
               thomson-http-mice-03, 13 August 2018,
-              <http://www.ietf.org/internet-drafts/draft-thomson-http-
+              <https://datatracker.ietf.org/doc/html/draft-thomson-http-
               mice-03.txt>.
 
    [I-D.yasskin-http-origin-signed-responses-03]
@@ -1191,48 +1194,49 @@ Signature:
 
    [RFC2965]  Kristol, D. and L. Montulli, "HTTP State Management
               Mechanism", RFC 2965, DOI 10.17487/RFC2965, October 2000,
-              <https://www.rfc-editor.org/info/rfc2965>.
+              <https://datatracker.ietf.org/doc/html/rfc2965>.
 
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011,
-              <https://www.rfc-editor.org/info/rfc6265>.
+              <https://datatracker.ietf.org/doc/html/rfc6265>.
 
    [RFC6454]  Barth, A., "The Web Origin Concept", RFC 6454,
               DOI 10.17487/RFC6454, December 2011,
-              <https://www.rfc-editor.org/info/rfc6454>.
+              <https://datatracker.ietf.org/doc/html/rfc6454>.
 
    [RFC6455]  Fette, I. and A. Melnikov, "The WebSocket Protocol",
               RFC 6455, DOI 10.17487/RFC6455, December 2011,
-              <https://www.rfc-editor.org/info/rfc6455>.
+              <https://datatracker.ietf.org/doc/html/rfc6455>.
 
    [RFC6797]  Hodges, J., Jackson, C., and A. Barth, "HTTP Strict
               Transport Security (HSTS)", RFC 6797,
               DOI 10.17487/RFC6797, November 2012,
-              <https://www.rfc-editor.org/info/rfc6797>.
+              <https://datatracker.ietf.org/doc/html/rfc6797>.
 
    [RFC7235]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Authentication", RFC 7235,
               DOI 10.17487/RFC7235, June 2014,
-              <https://www.rfc-editor.org/info/rfc7235>.
+              <https://datatracker.ietf.org/doc/html/rfc7235>.
 
    [RFC7469]  Evans, C., Palmer, C., and R. Sleevi, "Public Key Pinning
               Extension for HTTP", RFC 7469, DOI 10.17487/RFC7469, April
-              2015, <https://www.rfc-editor.org/info/rfc7469>.
+              2015, <https://datatracker.ietf.org/doc/html/rfc7469>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
               DOI 10.17487/RFC7540, May 2015,
-              <https://www.rfc-editor.org/info/rfc7540>.
+              <https://datatracker.ietf.org/doc/html/rfc7540>.
 
    [RFC7615]  Reschke, J., "HTTP Authentication-Info and Proxy-
               Authentication-Info Response Header Fields", RFC 7615,
               DOI 10.17487/RFC7615, September 2015,
-              <https://www.rfc-editor.org/info/rfc7615>.
+              <https://datatracker.ietf.org/doc/html/rfc7615>.
 
    [RFC8053]  Oiwa, Y., Watanabe, H., Takagi, H., Maeda, K., Hayashi,
               T., and Y. Ioku, "HTTP Authentication Extensions for
               Interactive Clients", RFC 8053, DOI 10.17487/RFC8053,
-              January 2017, <https://www.rfc-editor.org/info/rfc8053>.
+              January 2017,
+              <https://datatracker.ietf.org/doc/html/rfc8053>.
 
    [W3C.NOTE-OPS-OverHTTP]
               Hensley, P., Metral, M., Shardanand, U., Converse, D., and
