@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-05T01:02:14.822092+00:00",
+  "timestamp": "2021-03-08T04:24:00.490089+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -10157,7 +10157,7 @@
       "labels": [],
       "body": "We should spell out how \"Subresource loading with Web Bundles\" are related to [WICG/resource-bundles](https://github.com/WICG/resource-bundles/) in its [explainer](https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading.md).\r\n\r\nThe context: https://github.com/w3ctag/design-reviews/issues/616#issuecomment-790395734\r\n",
       "createdAt": "2021-03-04T07:53:21Z",
-      "updatedAt": "2021-03-05T00:34:48Z",
+      "updatedAt": "2021-03-05T03:40:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -10166,6 +10166,13 @@
           "body": "We should also update the [alternate designs](https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading.md#alternate-designs) with some of the ideas from [resource-bundles](https://github.com/WICG/resource-bundles/blob/main/subresource-loading.md#example) and [MT's post](https://lowentropy.net/posts/bundles/#indirection-for-identifiers).",
           "createdAt": "2021-03-05T00:34:40Z",
           "updatedAt": "2021-03-05T00:34:48Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A good point. Some of alternative designs have not been updated, and I'm feeling a bit outdated.\r\nWe should collect alternative designs and summarize them in the explainer.",
+          "createdAt": "2021-03-05T03:40:04Z",
+          "updatedAt": "2021-03-05T03:40:04Z"
         }
       ]
     }
@@ -51982,13 +51989,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2021-02-25T03:54:24Z",
-      "updatedAt": "2021-03-05T00:58:59Z",
+      "updatedAt": "2021-03-05T07:36:04Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "aa2368a289dcbac514a0f948a0e067d39303794e",
       "headRepository": "horo-t/webpackage",
       "headRefName": "protocolHandler",
-      "headRefOid": "c46241deb853464ed7c09e06ffabac74bdea0623",
+      "headRefOid": "18bc500069b7b09d4bc8076250dc061de5ca60f4",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -52035,6 +52042,13 @@
           "body": "Re https://github.com/WICG/webpackage/pull/629#issuecomment-790254524, I think it's ok to start the origin trial using `urn:uuid:` and then change it to be more specific later. We're trying to get developer feedback on the whole thing, and that piece being wrong isn't likely to invalidate any of the feedback or break guarantees.\r\n\r\nRe @domenic's https://github.com/WICG/webpackage/pull/629#issuecomment-790860454, since it seems like everyone's happy with moving away from `urn:uuid:` to a scheme that isn't [safelisted](https://html.spec.whatwg.org/#safelisted-scheme), we don't really need this PR. I think the PR is acceptable because the call sites for [process a navigate URL scheme](https://html.spec.whatwg.org/multipage/browsing-the-web.html#process-a-navigate-url-scheme) always prioritize fetchable URLs over registerProtocolHander-registered handlers, so prioritizing something we know how to fetch (because it's in a bundle) seems reasonable even if it has a registerable scheme. But on the other hand, the data flow look like it'll become weird, so if we don't *need* to do it, we probably shouldn't.",
           "createdAt": "2021-03-05T00:47:20Z",
           "updatedAt": "2021-03-05T00:47:20Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It seems complex than I expected. I'm not 100% confident how to interpret the current spec. However, this is an explainer, so maybe we don't need a normative one at this point.\r\n\r\nMy suggestions are:\r\n1. Merge a PR so that we can clarify that UA must load a resource from a bundle, bypassing any custom registered protocol handler.\r\n2. And, file a new issue to discuss moving away from \"urn:uuid:\".\r\n\r\nWDYT?\r\n",
+          "createdAt": "2021-03-05T03:25:19Z",
+          "updatedAt": "2021-03-05T03:25:19Z"
         }
       ],
       "reviews": [
@@ -52054,7 +52068,7 @@
               "originalPosition": 6,
               "body": "Nit; Could we replace \"should\" with \"must\"?\r\n(This is an explainer, so this is not an issue, however, \"must\" may be better for this case, IMO)",
               "createdAt": "2021-03-03T04:43:47Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52074,7 +52088,7 @@
               "originalPosition": 6,
               "body": "Done",
               "createdAt": "2021-03-03T06:00:11Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52107,7 +52121,7 @@
               "originalPosition": 4,
               "body": "How about not mentioning \"urn\" scheme here? I think it is redundant.\r\nCan we simply say, for example, \"The browser must ignore any custom registered protocol handler in loading a resource from a bundle\"?",
               "createdAt": "2021-03-04T04:05:53Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52127,7 +52141,7 @@
               "originalPosition": 4,
               "body": "I'm not sure whether it is a good idea or not to ignore a custom registered protocol handler in loading a subresource from a bundle. That needs a discussion, however, it seems much *safer* to ignore any custom registered protocol handler until we have a consensus.",
               "createdAt": "2021-03-04T04:13:26Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52147,7 +52161,7 @@
               "originalPosition": 4,
               "body": "Done",
               "createdAt": "2021-03-04T04:14:59Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52167,7 +52181,7 @@
               "originalPosition": 5,
               "body": "This is much more comfortable; thanks @hayatoito. Custom protocol handlers are always used from https://html.spec.whatwg.org/multipage/browsing-the-web.html#process-a-navigate-url-scheme, which looks like it's only called after filtering out \"fetch schemes\" (like `https:`). Since a URL in a bundle is fetchable, it makes sense to avoid checking custom protocol handlers. So ...\r\n\r\n```suggestion\r\nIf a URL is available from an attached bundle, the browser must retrieve it from the bundle, instead of using any [registered custom protocol handler](https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-registerprotocolhandler) for its scheme.\r\n```",
               "createdAt": "2021-03-04T18:34:45Z",
-              "updatedAt": "2021-03-05T00:58:38Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
             }
           ]
         },
@@ -52187,7 +52201,47 @@
               "originalPosition": 5,
               "body": "Done",
               "createdAt": "2021-03-05T00:58:59Z",
-              "updatedAt": "2021-03-05T00:58:59Z"
+              "updatedAt": "2021-03-05T07:35:48Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA0ODM1MTc2",
+          "commit": {
+            "abbreviatedOid": "c46241d"
+          },
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "That sounds right to me.",
+          "createdAt": "2021-03-05T06:18:51Z",
+          "updatedAt": "2021-03-05T06:19:01Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nthe bundle, instead of using any [registered custom protocol handler](https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-registerprotocolhandler)\r\n```",
+              "createdAt": "2021-03-05T06:18:51Z",
+              "updatedAt": "2021-03-05T07:35:48Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA0ODcxMjc5",
+          "commit": {
+            "abbreviatedOid": "18bc500"
+          },
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-05T07:36:04Z",
+          "updatedAt": "2021-03-05T07:36:04Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Done.\r\nThank you.",
+              "createdAt": "2021-03-05T07:36:04Z",
+              "updatedAt": "2021-03-05T07:36:04Z"
             }
           ]
         }
@@ -52205,7 +52259,7 @@
       "labels": [],
       "body": "Can be helpful for computing header-integrity, which doesn't rely on reading\r\nthe payload (because of Digest).",
       "createdAt": "2021-03-05T00:46:42Z",
-      "updatedAt": "2021-03-05T01:00:38Z",
+      "updatedAt": "2021-03-05T01:39:08Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "aa2368a289dcbac514a0f948a0e067d39303794e",
