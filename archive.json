@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-08T04:24:00.490089+00:00",
+  "timestamp": "2021-03-12T06:10:51.590902+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -52293,6 +52293,191 @@
           "body": "Thanks!",
           "createdAt": "2021-03-05T01:00:12Z",
           "updatedAt": "2021-03-05T01:00:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 633,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTg5MzIzMjYw",
+      "title": "Mention the relationship to Resource Bundles (issue #630)",
+      "url": "https://github.com/WICG/webpackage/pull/633",
+      "state": "OPEN",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It'd be better to mention how this proposal and Resource Bundles are\r\nrelated briefly.\r\n\r\nWe'll add more details and update alternative designs with some of ideas\r\nfrom resource-bundles and others.",
+      "createdAt": "2021-03-10T09:20:31Z",
+      "updatedAt": "2021-03-12T05:31:27Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
+      "headRepository": "hayatoito/webpackage",
+      "headRefName": "resource-bundle",
+      "headRefOid": "eec2baadf896e3a25ca6394f33f79a788eb7c2fb",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@jyasskin Could you please review this?",
+          "createdAt": "2021-03-12T05:31:27Z",
+          "updatedAt": "2021-03-12T05:31:27Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA4NTAxOTc3",
+          "commit": {
+            "abbreviatedOid": "eec2baa"
+          },
+          "author": "littledan",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2021-03-10T09:32:28Z",
+          "updatedAt": "2021-03-10T09:32:28Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 634,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTkwNDE5MTM0",
+      "title": "Document how CSP works for bundled resources",
+      "url": "https://github.com/WICG/webpackage/pull/634",
+      "state": "OPEN",
+      "author": "irori",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-03-11T02:48:59Z",
+      "updatedAt": "2021-03-12T01:00:07Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
+      "headRepository": "irori/webpackage",
+      "headRefName": "csp",
+      "headRefOid": "8064231a579234f64ffacec186b11b38f8615813",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA5MzU0OTg2",
+          "commit": {
+            "abbreviatedOid": "656b675"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good to me. I am not familiar with CSP, however, this explanation is clear to me, and I got it.",
+          "createdAt": "2021-03-11T02:54:08Z",
+          "updatedAt": "2021-03-11T02:54:08Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA5NzA4NjA0",
+          "commit": {
+            "abbreviatedOid": "656b675"
+          },
+          "author": "jeffkaufman",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-11T12:31:17Z",
+          "updatedAt": "2021-03-11T12:31:22Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "Give an example of how a `urn:uuid:` script is blocked?",
+              "createdAt": "2021-03-11T12:31:17Z",
+              "updatedAt": "2021-03-12T00:57:42Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjEwMzY4Mjgw",
+          "commit": {
+            "abbreviatedOid": "8064231"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-12T01:00:07Z",
+          "updatedAt": "2021-03-12T01:00:07Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "Updated the example to show that `*` does not allow a `urn:uuid:` resource.",
+              "createdAt": "2021-03-12T01:00:07Z",
+              "updatedAt": "2021-03-12T01:00:07Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 635,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTkxMzY3NTMz",
+      "title": "Add a strawperson proposal: Content Addressable Bundles",
+      "url": "https://github.com/WICG/webpackage/pull/635",
+      "state": "MERGED",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is a strawperson proposal at very early stage, aiming to load\r\nmultiple resources efficiently, using a Content-Addressable Bundle,\r\nwhich can link to other bundles.\r\n",
+      "createdAt": "2021-03-12T04:45:37Z",
+      "updatedAt": "2021-03-12T06:08:54Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
+      "headRepository": "hayatoito/webpackage",
+      "headRefName": "content-addressable-bundles",
+      "headRefOid": "2cdc0e33e2e8fdf985b77cb3bc1a46c071a23a2f",
+      "closedAt": "2021-03-12T06:08:54Z",
+      "mergedAt": "2021-03-12T06:08:54Z",
+      "mergedBy": "hayatoito",
+      "mergeCommit": {
+        "oid": "f5c59e252380098bd7590eb3eb7eaee2cb91a8d8"
+      },
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@jyasskin @irori @littledan \r\nAs I promised, I've written a strawperson proposal. Could you please quick check it?\r\nThis is just a starting point. So we don't need to discuss much in this PR, I guess.\r\nWe can discuss using our issue trackers or other places, after we merge this.\r\n\r\nI'll continue to update, refine, add more details! This is very early draft!",
+          "createdAt": "2021-03-12T04:50:30Z",
+          "updatedAt": "2021-03-12T04:50:30Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks! Let me merge this. Let me continue to update the proposal there.\r\nEarly feedback is always welcome!",
+          "createdAt": "2021-03-12T06:08:43Z",
+          "updatedAt": "2021-03-12T06:08:43Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjEwNDczMjU1",
+          "commit": {
+            "abbreviatedOid": "2cdc0e3"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Merging this as-is and discuss on issue tracker sounds good to me.",
+          "createdAt": "2021-03-12T06:04:34Z",
+          "updatedAt": "2021-03-12T06:04:34Z",
           "comments": []
         }
       ]
