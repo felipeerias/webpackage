@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-12T06:10:51.590902+00:00",
+  "timestamp": "2021-03-15T01:21:10.552913+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -52309,7 +52309,7 @@
       "labels": [],
       "body": "It'd be better to mention how this proposal and Resource Bundles are\r\nrelated briefly.\r\n\r\nWe'll add more details and update alternative designs with some of ideas\r\nfrom resource-bundles and others.",
       "createdAt": "2021-03-10T09:20:31Z",
-      "updatedAt": "2021-03-12T05:31:27Z",
+      "updatedAt": "2021-03-12T16:51:30Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
@@ -52342,6 +52342,26 @@
           "createdAt": "2021-03-10T09:32:28Z",
           "updatedAt": "2021-03-10T09:32:28Z",
           "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjEwOTc0MjE0",
+          "commit": {
+            "abbreviatedOid": "eec2baa"
+          },
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-12T16:50:46Z",
+          "updatedAt": "2021-03-12T16:51:30Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Remember to update the table of contents. I use https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc to do that automatically.",
+              "createdAt": "2021-03-12T16:50:46Z",
+              "updatedAt": "2021-03-12T16:51:30Z"
+            }
+          ]
         }
       ]
     },
@@ -52350,24 +52370,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTkwNDE5MTM0",
       "title": "Document how CSP works for bundled resources",
       "url": "https://github.com/WICG/webpackage/pull/634",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "irori",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2021-03-11T02:48:59Z",
-      "updatedAt": "2021-03-12T01:00:07Z",
+      "updatedAt": "2021-03-15T01:19:16Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
       "headRepository": "irori/webpackage",
       "headRefName": "csp",
       "headRefOid": "8064231a579234f64ffacec186b11b38f8615813",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-03-15T01:19:09Z",
+      "mergedAt": "2021-03-15T01:19:09Z",
+      "mergedBy": "irori",
+      "mergeCommit": {
+        "oid": "c848d49cc0035ad21d0aace865549567503272dc"
+      },
       "comments": [],
       "reviews": [
         {
@@ -52422,6 +52444,19 @@
               "updatedAt": "2021-03-12T01:00:07Z"
             }
           ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjEwODIzMDE4",
+          "commit": {
+            "abbreviatedOid": "8064231"
+          },
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-12T14:14:50Z",
+          "updatedAt": "2021-03-12T14:14:50Z",
+          "comments": []
         }
       ]
     },
