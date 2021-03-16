@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-15T01:21:10.552913+00:00",
+  "timestamp": "2021-03-16T06:57:54.229733+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -52302,24 +52302,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTg5MzIzMjYw",
       "title": "Mention the relationship to Resource Bundles (issue #630)",
       "url": "https://github.com/WICG/webpackage/pull/633",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hayatoito",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "It'd be better to mention how this proposal and Resource Bundles are\r\nrelated briefly.\r\n\r\nWe'll add more details and update alternative designs with some of ideas\r\nfrom resource-bundles and others.",
       "createdAt": "2021-03-10T09:20:31Z",
-      "updatedAt": "2021-03-12T16:51:30Z",
+      "updatedAt": "2021-03-15T06:42:15Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
       "headRepository": "hayatoito/webpackage",
       "headRefName": "resource-bundle",
-      "headRefOid": "eec2baadf896e3a25ca6394f33f79a788eb7c2fb",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "86f1c32fed0aac801d17fc17e81f5ca3f1b953d3",
+      "closedAt": "2021-03-15T06:42:15Z",
+      "mergedAt": "2021-03-15T06:42:15Z",
+      "mergedBy": "hayatoito",
+      "mergeCommit": {
+        "oid": "d6afcefffcf7ebeadbe4372d6d5532bf90e0a050"
+      },
       "comments": [
         {
           "author": "hayatoito",
@@ -52359,7 +52361,27 @@
               "originalPosition": 4,
               "body": "Remember to update the table of contents. I use https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc to do that automatically.",
               "createdAt": "2021-03-12T16:50:46Z",
-              "updatedAt": "2021-03-12T16:51:30Z"
+              "updatedAt": "2021-03-15T06:38:54Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjExODYzODk3",
+          "commit": {
+            "abbreviatedOid": "86f1c32"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-15T06:41:39Z",
+          "updatedAt": "2021-03-15T06:41:40Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "A good point. I forgot it. Let me update the TOC, then merge this PR. Thanks!",
+              "createdAt": "2021-03-15T06:41:39Z",
+              "updatedAt": "2021-03-15T06:41:40Z"
             }
           ]
         }
@@ -52472,7 +52494,7 @@
       "labels": [],
       "body": "This is a strawperson proposal at very early stage, aiming to load\r\nmultiple resources efficiently, using a Content-Addressable Bundle,\r\nwhich can link to other bundles.\r\n",
       "createdAt": "2021-03-12T04:45:37Z",
-      "updatedAt": "2021-03-12T06:08:54Z",
+      "updatedAt": "2021-03-15T03:35:08Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "f96d8cb03c2b74f92ca2bfdcb040d2e5c5de9e0b",
@@ -52499,6 +52521,48 @@
           "body": "Thanks! Let me merge this. Let me continue to update the proposal there.\r\nEarly feedback is always welcome!",
           "createdAt": "2021-03-12T06:08:43Z",
           "updatedAt": "2021-03-12T06:08:43Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Sorry, it is not clear for me what is the benefit of this proposal.\r\n> What is the difference between your proposal and just using two <link rel=webbundle>s?\r\n\r\nGood questions! This can be a good candidate for FAQ. I'll add FAQ.\r\n\r\nThis proposal strongly suggests that a bundle should be **self-contained** as much as possible; Every external dependencies, including their hash values, should be explicitly declared in the bundle for reproducibility.\r\n\r\nIn the example, `https://example.com/app/index.js.abcd.wbn` depends on the specific version of `date-util.js`, which is inside of  `https://cdn.example.com/date-util.js.f1f2.wbn`. Such a dependency, including its *hash*, should be explicitly declared in the bundle itself.\r\n\r\nIf the `index.js.abcd.wbn` doesn't declare the dependency to the specific version of `date-util.js`, there is no guarantee that  `index.js` can run without any version incompatible issues. That can beak anytime.\r\n\r\nOf course, `index.js` can hard-code the specific version of `data-util.js` such as `https://cdn.example.com/date-util.js@4.12` or something in its source file,:\r\n\r\n```\r\nimport * as date from \"https://cdn.example.com/date-util.js@4.12\";\r\n```\r\n\r\nHowever, this proposal suggests that this kind of hard-coding should be avoided, and such a dependency information should be specified outside of source code.\r\n\r\nI think this is an established pattern, and there are many similar pattern in other package management system or convention, such as node (package.json), Rust (Cargo.toml), deno (deps.ts).\r\n\r\nThis proposal also implies that only direct depencencies should be declared in a bundle (or in a page which uses `<link>`-based API). Indirect dependencies don't have to be declared.\r\n\r\nIn the example case, the main page doesn't depends on `date-util.js` directly, so the page doesn't have to declare it. \r\n\r\n",
+          "createdAt": "2021-03-15T02:36:58Z",
+          "updatedAt": "2021-03-15T02:36:58Z"
+        },
+        {
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Sorry I don\u2019t understand well.\r\n\r\n> In the example case, the main page doesn't depends on date-util.js directly, so the page doesn't have to declare it.\r\n\r\nSo, the https://cdn.example.com/date-util.js.f1f2.wbn can be removed from the example\u2019s link element\u2019s resources attribute?\r\nIf we do so, how can the browser know that the date-util.js can be loaded from the date-util.js.f1f2.wbn?\r\n",
+          "createdAt": "2021-03-15T03:04:13Z",
+          "updatedAt": "2021-03-15T03:04:13Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> So, the https://cdn.example.com/date-util.js.f1f2.wbn can be removed from the example\u2019s link element\u2019s resources attribute?\r\n\r\nThat makes sense.  The page can declare only `index.js` in resources in the example case.\r\n\r\ne.g.\r\n```html\r\n<link rel=webbundle\r\n      href=https://example.com/app/index.js.abcd.wbn\r\n      resources=\"index.js\" >\r\n```\r\n\r\nLet me fix this. Thanks!",
+          "createdAt": "2021-03-15T03:09:09Z",
+          "updatedAt": "2021-03-15T03:09:09Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> If we do so, how can the browser know that the date-util.js can be loaded from the date-util.js.f1f2.wbn?\r\n\r\nThe browser should do a similar step to 6, \"*parse the index section of the bundle and record a list of resource URLs*\", for `index.js.abcd.wbn` somewhere after 2 and before 4 (in *How to Load* section). Let me fix that!\r\n\r\n",
+          "createdAt": "2021-03-15T03:14:39Z",
+          "updatedAt": "2021-03-15T03:21:27Z"
+        },
+        {
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If my understanding is correct, the browser must defer all subresource requests after starting the web bundle fetch until the browser finishes parsing the web bundle.  Is my understanding correct?",
+          "createdAt": "2021-03-15T03:24:25Z",
+          "updatedAt": "2021-03-15T03:24:25Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> If my understanding is correct, the browser must defer all subresource requests after starting the web bundle fetch until the browser finishes parsing the web bundle. Is my understanding correct?\r\n\r\nA good question. This proposal doesn't have an intention to defer all subresource requests. The browser must defer only subresources requests for resources which are explicitly specified in `resources` attribute (or resources listed in the index section of a bundle).\r\n\r\nFor example,  if the top page uses `foo.js` directly, without any forward declaration, such as:\r\n\r\n`<script type=\"module\" src=\"foo.js\" />`.\r\n\r\nThat should be probably considered as a configuration error. There is no guarantee from where `foo.js` is loaded because of race condition, as of now. The proposal doesn't define any formal semantics in this case yet. \r\n",
+          "createdAt": "2021-03-15T03:34:43Z",
+          "updatedAt": "2021-03-15T03:35:08Z"
         }
       ],
       "reviews": [
@@ -52513,6 +52577,122 @@
           "body": "Merging this as-is and discuss on issue tracker sounds good to me.",
           "createdAt": "2021-03-12T06:04:34Z",
           "updatedAt": "2021-03-12T06:04:34Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjExNzc1NjM5",
+          "commit": {
+            "abbreviatedOid": "2cdc0e3"
+          },
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Sorry, it is not clear for me what is the benefit of this proposal.\r\nWhat is the difference between your proposal and just using two `<link rel=webbundle>`s?\r\nExample: \r\n```html\r\n<link rel=webbundle\r\n      href=https://example.com/app/index.js.abcd.wbn\r\n      resources=\"index.js foo.js bar.js\" >\r\n<link rel=webbundle\r\n      href=https://cdn.example.com/date-util.js.f1f2.wbn\r\n      resources=\"https://cdn.example.com/date-util.js\" >\r\n```",
+          "createdAt": "2021-03-15T01:52:34Z",
+          "updatedAt": "2021-03-15T02:05:08Z",
+          "comments": [
+            {
+              "originalPosition": 238,
+              "body": "date-util.js.f1f2.wbn",
+              "createdAt": "2021-03-15T01:52:34Z",
+              "updatedAt": "2021-03-15T02:05:08Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "https://github.com/azukaru/progressive-fetching/blob/master/docs/dynamic-bundling/index.md",
+              "createdAt": "2021-03-15T02:01:31Z",
+              "updatedAt": "2021-03-15T02:05:08Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjExNzg3Njk2",
+          "commit": {
+            "abbreviatedOid": "2cdc0e3"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-15T02:37:36Z",
+          "updatedAt": "2021-03-15T02:37:36Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "Thanks. Let me fix in another PR!",
+              "createdAt": "2021-03-15T02:37:36Z",
+              "updatedAt": "2021-03-15T02:37:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjExNzg3Nzgz",
+          "commit": {
+            "abbreviatedOid": "2cdc0e3"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-03-15T02:37:57Z",
+          "updatedAt": "2021-03-15T02:37:57Z",
+          "comments": [
+            {
+              "originalPosition": 238,
+              "body": "Ops. Thanks! Let me fix it in another PR.",
+              "createdAt": "2021-03-15T02:37:57Z",
+              "updatedAt": "2021-03-15T02:37:57Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 636,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTkzNjE4OTQ4",
+      "title": "Update content-addressable-bundles.md",
+      "url": "https://github.com/WICG/webpackage/pull/636",
+      "state": "MERGED",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- Address the comments of PR #625, fixing editorial errors\r\n- Introduce terminorogies: mutable bundles and immutable bundles\r\n- Add some FAQs",
+      "createdAt": "2021-03-16T06:37:38Z",
+      "updatedAt": "2021-03-16T06:56:13Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "d6afcefffcf7ebeadbe4372d6d5532bf90e0a050",
+      "headRepository": "hayatoito/webpackage",
+      "headRefName": "content-addressable-bundles",
+      "headRefOid": "6a8d4186b80e17cafc5f85e82a7169073c845dfb",
+      "closedAt": "2021-03-16T06:56:13Z",
+      "mergedAt": "2021-03-16T06:56:13Z",
+      "mergedBy": "irori",
+      "mergeCommit": {
+        "oid": "80af68a43b9755a6f185cfc4be9a422ee4704891"
+      },
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@irori I've updated the explainer a bit. Could you please do quick check and merge this?\r\n\r\ncc: @littledan @jyasskin \r\n\r\nLet me work on updating this explainer this week. There are still many TODO items.",
+          "createdAt": "2021-03-16T06:40:33Z",
+          "updatedAt": "2021-03-16T06:40:33Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjEyOTAxMDAz",
+          "commit": {
+            "abbreviatedOid": "6a8d418"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-16T06:55:44Z",
+          "updatedAt": "2021-03-16T06:55:44Z",
           "comments": []
         }
       ]
