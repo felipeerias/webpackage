@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-16T06:57:54.229733+00:00",
+  "timestamp": "2021-03-17T01:40:04.396206+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -51982,24 +51982,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTc5Nzg0NDM4",
       "title": "Mentions about custom scheme handler",
       "url": "https://github.com/WICG/webpackage/pull/629",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "horo-t",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2021-02-25T03:54:24Z",
-      "updatedAt": "2021-03-05T07:36:04Z",
+      "updatedAt": "2021-03-17T01:38:25Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "aa2368a289dcbac514a0f948a0e067d39303794e",
       "headRepository": "horo-t/webpackage",
       "headRefName": "protocolHandler",
       "headRefOid": "18bc500069b7b09d4bc8076250dc061de5ca60f4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-03-17T01:38:25Z",
+      "mergedAt": "2021-03-17T01:38:25Z",
+      "mergedBy": "horo-t",
+      "mergeCommit": {
+        "oid": "5d5b5dd7fab38940df920569642c7164d48228a8"
+      },
       "comments": [
         {
           "author": "horo-t",
@@ -52659,7 +52661,7 @@
       "labels": [],
       "body": "- Address the comments of PR #625, fixing editorial errors\r\n- Introduce terminorogies: mutable bundles and immutable bundles\r\n- Add some FAQs",
       "createdAt": "2021-03-16T06:37:38Z",
-      "updatedAt": "2021-03-16T06:56:13Z",
+      "updatedAt": "2021-03-16T21:51:31Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "d6afcefffcf7ebeadbe4372d6d5532bf90e0a050",
@@ -52679,6 +52681,20 @@
           "body": "@irori I've updated the explainer a bit. Could you please do quick check and merge this?\r\n\r\ncc: @littledan @jyasskin \r\n\r\nLet me work on updating this explainer this week. There are still many TODO items.",
           "createdAt": "2021-03-16T06:40:33Z",
           "updatedAt": "2021-03-16T06:40:33Z"
+        },
+        {
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged.",
+          "createdAt": "2021-03-16T07:03:13Z",
+          "updatedAt": "2021-03-16T07:03:13Z"
+        },
+        {
+          "author": "littledan",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I'm a bit concerned that this protocol has too many round-trips in it. The nested bundles are discovered one by one, down the tree. I think it's important to load all bundle chunks ASAP, without multiple round trips, to avoid being a regression vs current loading techniques. We could do this by making a manifest of the bundle chunk tree structure available inline in the HTML on initial load, so the browser can immediately calculate what should be fetched. I previously wrote up a somewhat different version of this idea at https://gist.github.com/littledan/18a1bd6e14e4f0ddb305a2a051ced01e (this gist preserves the idea that the integrity hash and chunk ID are separated, but they could be unified as in your document).",
+          "createdAt": "2021-03-16T21:51:31Z",
+          "updatedAt": "2021-03-16T21:51:31Z"
         }
       ],
       "reviews": [
