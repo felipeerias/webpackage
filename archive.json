@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-04-07T03:35:21.402473+00:00",
+  "timestamp": "2021-04-07T17:34:20.777272+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -9798,10 +9798,12 @@
       "author": "anforowicz",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "What should happen if there is a URL collision between URLs of resources contained in a bundle?  For example, a page may link to 2 cross-origin bundles that contain the same urn:uuid resource (accidentally or maliciously):\r\n\r\n```html\r\n<link rel=\u201dwebbundle\u201d href=\u201dhttps://a.com/bundle.wbn\u201d\r\n          resources=\u201durn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\u201d>\r\n<link rel=\u201dwebbundle\u201d href=\u201dhttps://b.com/bundle.wbn\u201d\r\n          resources=\u201durn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\u201d>\r\n```\r\n\r\nA page may also link to 2 same-origin bundles can also carry the same http URL:\r\n\r\n```html\r\n<link rel=\u201dwebbundle\u201d href=\u201dhttps://a.com/bundle.wbn\u201d\r\n          resources=\u201dhttps://a.com/foo.js\u201d>\r\n<link rel=\u201dwebbundle\u201d href=\u201dhttps://a.com/bundle2.wbn\u201d\r\n          resources=\u201dhttps://a.com/foo.js\u201d>\r\n```\r\n\r\nI would expect that if *a single page* links to 2 bundles with conflicting resource names, then there should be some kind of an error (when loading the bundle?  when loading the conflicting resource?).  The situation seems more challenging when *2 separate pages* link to different bundles that contain the same resource URL - this scenario is especially interesting if these 2 separate pages are hosted in separate renderer processes (so the URL collision may not be obvious within each of the renderer process and may only become a problem from perspective of a network service process where the bundle contents may be hosted).\r\n\r\nIt seems that when linking a cross-origin bundle, the UUID needs to be coordinated between 1) the bundle contents (served from the bundle origin) and 2) the page elements linking to the bundle resources (with html served from the page origin).  Therefore, it might not be practical to generate a random UUID every time a bundle is served, or every time a `<link rel=\"webbundle\"` element is served.  Therefore, a malicious actor may try to serve bundles that collide with known uuid URLs.",
       "createdAt": "2020-10-29T17:21:38Z",
-      "updatedAt": "2020-10-29T17:46:56Z",
+      "updatedAt": "2021-04-07T04:54:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -9891,16 +9893,24 @@
       "id": "MDU6SXNzdWU3ODQwMDk2NzQ=",
       "title": "Clarify how CORS behaves for Subresource Loading with WebBundles",
       "url": "https://github.com/WICG/webpackage/issues/609",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hayatoito",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "It would be better to clarify how CORS behaves for [Subresource Loading with WebBundles](\r\nhttps://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md).\r\n\r\nI'm trying to write WPT [here](https://chromium-review.googlesource.com/c/chromium/src/+/2617167/), however, the explainer should be also updated to clarify how CORS works.",
       "createdAt": "2021-01-12T08:05:20Z",
-      "updatedAt": "2021-01-12T08:05:20Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2021-04-07T04:43:44Z",
+      "closedAt": "2021-04-07T04:43:43Z",
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Let's close this. PR #622 updated the explainer.",
+          "createdAt": "2021-04-07T04:43:43Z",
+          "updatedAt": "2021-04-07T04:43:43Z"
+        }
+      ]
     },
     {
       "number": 612,
@@ -10007,10 +10017,12 @@
       "assignees": [
         "yoavweiss"
       ],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "[Cache Digests](https://tools.ietf.org/html/draft-ietf-httpbis-cache-digest) could be practical for Web bundles: using them, it could be possible to \"Server Push\" the web bundle, and the server could include in the pushed bundle only what isn't already in the cache of the browser. So we (theoretically) could have the best of both approaches; a good compression, one less RTT and a good hit rate.\r\n\r\nIs it something we should investigate? (I initially discussed this privately with @KenjiBaheux in discussions related to the removal of Server Push from Chrome.)",
       "createdAt": "2021-02-12T20:05:56Z",
-      "updatedAt": "2021-02-17T19:14:35Z",
+      "updatedAt": "2021-04-07T04:55:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -53164,7 +53176,7 @@
       "labels": [],
       "body": "\u2026tension part (#623 #641)\r\n\r\nThis is the almost mechanical *refactoring*, splitting the\r\nsubresource-loading explainer into the core part and the extension\r\npart. The related issues are #624 and #641.\r\n\r\nIn a follow-up PR, we might want to refine the core part so that we\r\ncan write extension parts more easily, such as having well-defined\r\nterminologies and hook points.",
       "createdAt": "2021-04-02T06:27:04Z",
-      "updatedAt": "2021-04-07T03:33:27Z",
+      "updatedAt": "2021-04-07T06:12:41Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "de6545e3c0c5d18183c01f627b9be0aaf9378e56",
@@ -53184,6 +53196,13 @@
           "body": "Thanks for the reviews. I'll merge the PR in a day.\r\n\r\n@jyasskin If you have a chance to take a look, feel free to review this!",
           "createdAt": "2021-04-06T05:35:52Z",
           "updatedAt": "2021-04-06T05:35:52Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "cc: @littledan @jyasskin \r\nI've merged this PR, aiming to address #623 #641.\r\nThis is just a starting point!",
+          "createdAt": "2021-04-07T06:12:41Z",
+          "updatedAt": "2021-04-07T06:12:41Z"
         }
       ],
       "reviews": [
@@ -53303,6 +53322,61 @@
           "body": "",
           "createdAt": "2021-04-05T01:06:19Z",
           "updatedAt": "2021-04-05T01:06:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 646,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjEwMzg3MTUx",
+      "title": "[subresource-loading] Update the TOC and fix a link",
+      "url": "https://github.com/WICG/webpackage/pull/646",
+      "state": "MERGED",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update the TOC and fix a link to the extension doc.",
+      "createdAt": "2021-04-07T06:53:13Z",
+      "updatedAt": "2021-04-07T17:26:44Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "4ec4d7d8c72deef2132e1bb51ddcff274e7b97ff",
+      "headRepository": "hayatoito/webpackage",
+      "headRefName": "update-toc",
+      "headRefOid": "6c6fc89985ecab8ef6aa2db7c60c11127ffb67ae",
+      "closedAt": "2021-04-07T17:26:44Z",
+      "mergedAt": "2021-04-07T17:26:44Z",
+      "mergedBy": "jyasskin",
+      "mergeCommit": {
+        "oid": "f60efe9bbbb5a9f0543e890ef642d5cef57fc5c9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI5NjU3Mzcz",
+          "commit": {
+            "abbreviatedOid": "6c6fc89"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-04-07T07:04:14Z",
+          "updatedAt": "2021-04-07T07:04:14Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjMwMjc1OTIy",
+          "commit": {
+            "abbreviatedOid": "6c6fc89"
+          },
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-04-07T17:26:27Z",
+          "updatedAt": "2021-04-07T17:26:27Z",
           "comments": []
         }
       ]
