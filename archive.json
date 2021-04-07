@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-03-25T05:45:03.378218+00:00",
+  "timestamp": "2021-04-07T03:35:21.402473+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -112,6 +112,11 @@
       "name": "tag-needs-resolution",
       "description": "Issue the Technical Architecture Group has raised and looks for a response on.",
       "color": "7fff00"
+    },
+    {
+      "name": "subresource-loading",
+      "description": "",
+      "color": "73D6DA"
     }
   ],
   "issues": [
@@ -9068,7 +9073,7 @@
       "labels": [],
       "body": "Reading this:\r\n\r\n![image](https://user-images.githubusercontent.com/1101339/80369842-39399f80-888f-11ea-9a9a-fe030b25772e.png)\r\n\r\nIt made me realize that Google Play is currently disallowing TWAs distributed to kids (Family Policy), it seems to have to do with the fact that websites might be able to replace the content as they have full network access, so it might make sense to take this into considerations and maybe disallow network traffic or restrict it somehow.",
       "createdAt": "2020-04-27T12:00:06Z",
-      "updatedAt": "2021-02-16T21:10:43Z",
+      "updatedAt": "2021-04-06T13:30:16Z",
       "closedAt": null,
       "comments": [
         {
@@ -9084,6 +9089,13 @@
           "body": "@craigfrancis Honestly I think this this is the only way Bundles can succeed.  As it is, the privacy advocates don't trust them.\r\n\r\nIf they're not onboard, the platfom will basically always be in danger of being removed from some browsers and will become inconvenient to use.\r\n\r\nI think that bundles should never be allowed internet access without explicit user permission, regardless of where they came from.\r\n\r\nThe most compelling use case of bundles is for installable apps, and as a PDF Forms  replacement.  If something is meant to be edited and shared, and created without a domain name, people will be happy to know it can't phone home without a popup prompt.",
           "createdAt": "2021-02-16T21:04:06Z",
           "updatedAt": "2021-02-16T21:10:43Z"
+        },
+        {
+          "author": "abflow",
+          "authorAssociation": "NONE",
+          "body": "In (https://github.com/whatwg/html/issues/6553), was introduced a declarative way for web developers to easily reason about network permissions without having to deal with HTTP headers, via the `allow-net` attribute in insecure HTML tags. This declarative approach for defining network policies would be more in line with the HTML specification than current network policies approaches, while offering: \r\n\r\n- no network access by default (offline-first documents and applications)\r\n- enhanced, fine-grained network permissions, \r\n- the possibility to gain network isolation for critical parts of the document/application (https://github.com/whatwg/html/issues/6547) \r\n- the possibility to define and even extend declarative cross-origin communication scenarios, by leveraging the Shared Worker technology (https://github.com/whatwg/html/issues/6555).",
+          "createdAt": "2021-04-06T11:00:01Z",
+          "updatedAt": "2021-04-06T13:30:16Z"
         }
       ]
     },
@@ -10057,10 +10069,12 @@
       "author": "littledan",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "In https://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md#link-based-api , there is an idea of `urn:uuid:` URLs which can be present in the bundle, which will be treated as a new opaque origin.\r\n\r\nI really like the idea of adding a new web platform feature that makes it easier to create an opaque-origin iframe. This seems genuinely useful for increasing isolation (potentially helping privacy), where there are often multiple units of code that need to be treated with different trust levels. Existing solutions do have problems:\r\n- Blobs can achieve the same semantics, but require that all of the HTML be downloaded, and then put in a blob, and then in an iframe. This blocks important browser optimizations like starting the render before the whole network fetch is done.\r\n- `<iframe sandbox>` can be used declaratively, without this overhead of indirection of storing to and loading from blobs, but its semantics are quite different. Sometimes you don't want these additional restrictions, and you just want an opaque-origin iframe.\r\n\r\nAt the same time, I'm skeptical of the API surface here being linked to URLs inside bundles, for a couple reasons:\r\n- It seems like opaque-origin iframes are useful outside of bundles (and in omit-credentials contexts), even if there are some use cases where it is useful to load their HTML from a bundle.\r\n- There are some annoying edge cases that would have to be defined one way or another, e.g., if multiple bundles define the same UUID.\r\n- There is a kind of \"semantics\" that the URL has--e.g., you can see which origin it comes from--which is more visible if it's not mapped through a UUID.\r\n- There's no way to map loading these opaque URLs to an \"underlying\" URL for potential verification, as suggested in #551\r\n\r\nI want to suggest that, rather than defining UUID URLs to make opaque-origin iframes, a separate attribute is used in the iframe tag, to make the origin opaque, regardless of what the `src` is. For example, we could call it `<iframe opaque>`. [This example](https://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md#the-main-document) could instead be written as:\r\n\r\n```html\r\n<link rel=\"webbundle\"\r\n  href=\"https://example.com/dir/subresources.wbn\"\r\n  resources=\"https://example.com/dir/a.js\r\n             https://example.com/dir/b.js\r\n             https://example.com/dir/c.png\r\n             https://example.com/dir/page.html\"\r\n/>\r\n\r\n<script type=\u201dmodule\u201d src=\u201dhttps://example.com/dir/a.js\u201d></script>\r\n<img src=https://example.com/dir/c.png>\r\n<iframe src=\"https://example.com/dir/page.html\" opaque>\r\n```",
       "createdAt": "2021-02-16T12:39:50Z",
-      "updatedAt": "2021-02-19T14:02:33Z",
+      "updatedAt": "2021-04-06T09:42:02Z",
       "closedAt": null,
       "comments": [
         {
@@ -10102,10 +10116,12 @@
       "author": "jeffkaufman",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "Bundles are a promising way of serving ads. Ad javascript could fetch multiple ads in a single request and host each on its own origin. This would ensure that malicious ads can't read or modify either the publisher page or other ads, and that malicious parties also can't read or modify the ads. While these protections are technically possible today, in a convoluted and inefficient manner, bundles provide them in a clear and natural way, and more efficiently than current web APIs.\r\n\r\n## What's Possible Today\r\n\r\nWhen publishers load Google ads on their pages, they start by including some JavaScript. This ad JS is responsible for sending requests to a server, which decides what ads to show. After the ad server makes its decision it responds with the HTML for each ad, and the ad JS renders the ad HTML to the page. When deciding which ads to return, the server can generally make the best decision if it can consider the whole page simultaneously. For example, one advertiser may not be willing to have their ad appear next to competitors', or the publisher may want to serve a large ad only if the remaining ads are smaller. This means the server should receive a single ad request for the HTML for all the ads on the page.\r\n\r\nThe best we can do today is with `XHR` or `fetch`. The ad JS sends a request, receives a list of the HTML to be written for each ad, creates individual iframes, and finally writes the ad HTML into the iframes. Traditionally, the ad JS created these frames on the same origin as the publisher page. While this is very simple and efficient, it does not offer any security protection. For example, scripts within an ad inserted this way can easily read and modify the publisher page.\r\n\r\n![wbn-doc-1](https://user-images.githubusercontent.com/262566/108074649-75650900-7037-11eb-8c29-cdacbfb09f28.png)\r\n\r\n*ads' HTML fetched with XHR and rendered same-origin*\r\n\r\nTo protect the publisher from potentially harmful ads, the ad JS generally wraps third-party ad HTML in \"[SafeFrames](https://www.iab.com/guidelines/safeframe/)\", an [IAB](https://www.iab.com/) standard way of rendering ads. The ad JS injects an iframe pointing to a container HTML document, hosted by the publisher\u2019s ad server on an isolated subdomain. Ad HTML is then passed into the container through the iframe's name attribute. The container sees this, and overwrites itself with the ad's HTML. Additionally, preventing the ads from interfering with each other requires every ad on the page to use a container loaded from a unique origin, so they will all be cross-origin from each other. Hosting containers on unique origins, however, adds substantial latency, since none of these containers can be cached. Slower loading ads mean worse user experience, primarily due to increased [layout shift](https://web.dev/cls/), and less money for publishers. \r\n\r\n![wbn-doc-2](https://user-images.githubusercontent.com/262566/108074671-7bf38080-7037-11eb-8682-356f7f73fb3a.png)\r\n\r\n*ads' HTML fetched with XHR and rendered via SafeFrame*\r\n\r\nWhile the publisher is now protected, this approach does not protect the ad HTML from the page. The publisher or other third-party scripts on the page can make arbitrary modifications to the HTML before it is passed into the SafeFrame. Similarly, they can read the HTML and extract identifiers that can help bypass click fraud detection. It is possible to protect against this by sending the ad request from a fetching iframe on the ad network domain, and then postMessaging the HTML to receiver iframes. A fetching frame approach, however, imposes both a network round trip and a delay waiting for the container to postMessage that it's ready, which is a large amount of latency.\r\n\r\n![wbn-doc-3](https://user-images.githubusercontent.com/262566/108074716-86157f00-7037-11eb-87ac-46e2fa147e35.png)\r\n\r\n*ads' HTML fetched with XHR in a fetching frame and rendered in a receiver frame*\r\n\r\n## What's Possible with Web Bundles\r\n\r\nWeb Bundles with [subresources](https://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md) offer a solution to all of these problems. The ad JS can send a request for a bundle, and the response can contain each ad's HTML as a resource on its own distinct, opaque origin. The ad JS can render an ad by setting the src of an iframe to a resource that's inside the bundle, but nothing on the client can read or modify the ad HTML because the resources are opaque. Similarly, because the origins are distinct, the ads are not able to read or modify each other or the publisher page.\r\n\r\n![wbn-doc-4](https://user-images.githubusercontent.com/262566/108074754-8f9ee700-7037-11eb-9f57-7e6474dabba3.png)\r\n\r\n*ads' HTML fetched as a bundle and rendered via setting the iframe src*\r\n\r\nOverall this is more efficient, in terms of network, CPU, and latency, because it removes the need to load iframes that overwrite themselves with the ad HTML. Bundles allow the ad server to, essentially, say what it means: here are multiple resources that should each be rendered on a unique origin.\r\n\r\nSpecifically, what makes bundles useful for ad serving is that they provide:\r\n\r\n* A way to make a single fetch that loads several cross-origin HTML resources into a staging area for the page.\r\n  * There's no harm in putting these resources into the global cache, but it also doesn't help because they're never re-used.\r\n* A way to load an iframe whose src is one of those resources.\r\n  * It's ok if the iframes wind up with opaque origins instead of re-usable origins.\r\n  * The iframes don't need to load their own subresources from the bundle.\r\n* The surrounding page can't read or modify the resources.\r\n  * A process that starts with `fetch`, for example, is not sufficient because the page can override `fetch`.",
       "createdAt": "2021-02-16T14:21:40Z",
-      "updatedAt": "2021-02-17T18:33:47Z",
+      "updatedAt": "2021-04-06T09:42:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -10154,10 +10170,12 @@
       "author": "hayatoito",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "We should spell out how \"Subresource loading with Web Bundles\" are related to [WICG/resource-bundles](https://github.com/WICG/resource-bundles/) in its [explainer](https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading.md).\r\n\r\nThe context: https://github.com/w3ctag/design-reviews/issues/616#issuecomment-790395734\r\n",
       "createdAt": "2021-03-04T07:53:21Z",
-      "updatedAt": "2021-03-05T03:40:04Z",
+      "updatedAt": "2021-04-06T09:42:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -10185,10 +10203,12 @@
       "author": "hayatoito",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "Let me file an issue to discuss a proposal: [Resource Loading with Content Addressable Bundles](https://github.com/WICG/webpackage/blob/main/explainers/content-addressable-bundles.md).\r\n\r\nThis is a strawperson proposal at very early stage, and this can be positioned as \"my personal proposal\", as of now.\r\n\r\nI've put it in `explainer` directory, however, if that is inappropriate and confusing, I'll move it to somewhere. Maybe we can have `proposals` directory, as [WICG/webcomponenets has](https://github.com/WICG/webcomponents/tree/gh-pages/proposals).  I am not sure what is the best practice in this repository. \r\n\r\nI hope we can use this issue to discuss and get early feedback.\r\nI've observed that PRs are not a good place to discuss overall design and ideas because we are likely to lose the discussion history. An issue might be a better place to discuss.\r\n\r\ncc: @littledan @jyasskin @yoavweiss ",
       "createdAt": "2021-03-17T07:35:07Z",
-      "updatedAt": "2021-03-24T21:26:06Z",
+      "updatedAt": "2021-04-06T09:42:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -10211,6 +10231,13 @@
           "body": "Some overall thoughts:\r\n\r\n1. I think it would help to create an `explainers/proposals/` directory to distinguish things that we're pretty confident are a good direction from things that we're just exploring.\r\n\r\n1. The Introduction and Goals sections don't explain to me why this proposal exists. \"there is no mechanism to fetch the partial content of the bundle.\" makes me think that it's going to be an alternative to the subsetting options in @littledan's https://github.com/WICG/resource-bundles/blob/main/subresource-loading.md, but I don't see anything about the request headers to let the server know which subset to request, or anything about when to request a byte range from a bundle. \r\n\r\n1. https://github.com/WICG/webpackage/issues/40 discusses the goal to let bundles declare that they depend on another bundle. Is that actually what this is about?\r\n\r\n1. \"Content-addressable\" makes me think these items will be identified purely by their hashes, but it looks like they pair a real URL with a hash of the content that's expected to be there, and reject the content if it doesn't match. That makes them more similar to subresource integrity.\r\n\r\n1. I thought through ways to refer to sub-packages in [draft-yasskin-dispatch-web-packaging](https://tools.ietf.org/id/draft-yasskin-dispatch-web-packaging-00.html#rfc.section.2.4.1). Those were all embedded into the overall package, rather than external URLs, but some of the same considerations apply. In particular, do we always want to refer by exact hash, or does it make sense to also allow a minimum timestamp, or more complete [semver](https://semver.org/)-ish version compatibility?\r\n\r\n1. I'm not sure it makes sense to designate a \"main resource\" for subresource bundles. e.g. if we want to bundle a bunch of images together, or a stylesheet with a script, they're all peers. It's only trees of scripts and stylesheets that have a notion of an entrypoint. This is part of @littledan's motivation for https://github.com/WICG/webpackage/pull/617.\r\n\r\n",
           "createdAt": "2021-03-24T21:26:06Z",
           "updatedAt": "2021-03-24T21:26:06Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @jyasskin! I really appreciate your feedback!\r\n\r\nLet me reply for some of feedback if I can answer to them briefly. For other feedback, let me take that into consideration and improve the proposal based on the feedback.\r\n\r\nRe 1:\r\nSounds good! Let me put a proposal into `explainers/proposals`. I'm thinking of splitting the current proposal into two proposals: 1) Declare dependencies to external bundles, and 2) Content Addressable Bundles, in order to make each proposals more understandable and  their use cases and goals more clear.  Let me put them into  `explainers/proposals` once I finish splitting. That might take some time.\r\n\r\nRe 3, 5:\r\nI didn't know #40. Thanks! That seems to share a common goal. Let me mention #40, and use #40 for further discussion.\r\n\r\nRe 6:\r\nThat's one of TODO items. I'm still exploring how *entry points* should be. I'm now looking how `webpack` works to learn what they have been doing. Yes, #617 is related. Thanks! \r\n\r\n\r\nI'll keep this issue up-to-date once I have more insights.\r\n\r\n\r\n\r\n\r\n",
+          "createdAt": "2021-03-29T04:00:02Z",
+          "updatedAt": "2021-03-29T04:00:02Z"
         }
       ]
     },
@@ -10223,10 +10250,12 @@
       "author": "hayatoito",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "It would be better to split the [Subresource Loading with WebBundles](https://github.com/WICG/resource-bundles/blob/main/subresource-loading.md) Explainer into two parts 1) core part and 2) extension parts.\r\n\r\n- Core part, which explain the common basic APIs for Subresource Loading\r\n- Extension parts:\r\n  -  Support urn::uuid resources and opaque origins (for use case #624)\r\n  - Any other extensions...\r\n\r\nWe might want to split an explainer into two files, physically, so that separation (and API boundary) would become clear.\r\n\r\nBy having a core part, we hope we can find a common part in various proposals, and we can write extension parts on the top of it and discuss separately.\r\n\r\nRelated issue: #623\r\n",
       "createdAt": "2021-03-24T08:45:52Z",
-      "updatedAt": "2021-03-25T02:42:38Z",
+      "updatedAt": "2021-04-06T09:42:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -10254,12 +10283,69 @@
       "author": "SinZ163",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "subresource-loading"
+      ],
       "body": "Title is a bit verbose but gets the point across.\r\n\r\nWith script tags, when module support was added, nomodule was also added so you could have both in your markup and the browsers that knew modules loaded modules and intentionally didn't load nomodules, I feel a similar pattern is needed for WebBundles.\r\n\r\nIn the chromium Origin Trial, it is mentioned that its possible in JS to do feature detection for this, but that would require having web app developers to effectively polyfill webbundles ourselves and only add the JS bundle script tag at runtime once feature detection has happened, increasing the size of the html body and adding latency when instead this feature can ship with polyfill mechanisms baked in.",
       "createdAt": "2021-03-24T15:53:50Z",
-      "updatedAt": "2021-03-24T16:02:01Z",
+      "updatedAt": "2021-04-06T09:35:26Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Introducing `<script nowebbundle type=text/javascript src=bundle.js></script>` could be a solution for this.\r\n\r\nCurrently we are using link elements for subresource web bundles in the Origin Trial.\r\nBut there is a discussion to use `<script>` elements for security reason.\r\nSo if we introduce`<script type=webbundle>` elements instead of `<link rel=webbundle>`, introducing `<script nowebbundle>` sounds plausible.\r\n",
+          "createdAt": "2021-03-29T04:30:09Z",
+          "updatedAt": "2021-03-29T04:30:09Z"
+        },
+        {
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "body": "CC: @littledan ",
+          "createdAt": "2021-03-29T04:31:36Z",
+          "updatedAt": "2021-03-29T04:31:36Z"
+        },
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We don't have any special support for an unsupported environment yet. So I guess a workaround would be a general one, such as:\r\n\r\n```js\r\n<script>\r\nif (!feature_detection()) {\r\n  const script = document.createElement('script') ;\r\n  script.src = \".../traditional-bundle-runtime.js\";\r\n  document.body.appendChild(script);\r\n  ...\r\n}\r\n</script>\r\n```\r\n\r\nThis might add *latency*, as you mentioned.",
+          "createdAt": "2021-03-29T04:41:32Z",
+          "updatedAt": "2021-03-29T04:41:49Z"
+        }
+      ]
+    },
+    {
+      "number": 644,
+      "id": "MDU6SXNzdWU4NDQwODM1NjE=",
+      "title": "Define how CORP and COEP should work for subresource loading",
+      "url": "https://github.com/WICG/webpackage/issues/644",
+      "state": "OPEN",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "subresource-loading"
+      ],
+      "body": "- CORP: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)\r\n- COEP: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy\r\n\r\nWe need to figure out how CORP and COEP should work for Subresource loading with WebBundles.\r\n\r\nChromium side issue is [here](https://bugs.chromium.org/p/chromium/issues/detail?id=1163788).\r\n",
+      "createdAt": "2021-03-30T05:17:01Z",
+      "updatedAt": "2021-04-06T09:33:20Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Let me start to figure out what is a desired behavior at pretty high level, as a starting point of a discussion.\r\n\r\n### For the bundle:\r\nCORP and COEP are irrelevant because a browser always use CORS to fetch the bundle.\r\n\r\n### For the resources within the bundle:\r\nA browser **must** check a response header of a resource in a bundle.\r\n e.g.  The resources within the bundle need \"Cross-Origin-Resource-Policy: cross-origin\" response header if they are intended for the cross-origin page which has \"Cross-Origin-Embedder-Policy: require-corp\", and so on.\r\n",
+          "createdAt": "2021-03-30T05:39:49Z",
+          "updatedAt": "2021-03-30T05:39:49Z"
+        },
+        {
+          "author": "abflow",
+          "authorAssociation": "NONE",
+          "body": "Related in whatwg/html\r\nProposal: Deprecation of \"cross-origin-policy\" in favor of a declarative network isolation of insecure HTML tags ([#6553](https://github.com/whatwg/html/issues/6553))",
+          "createdAt": "2021-04-03T08:10:59Z",
+          "updatedAt": "2021-04-03T08:10:59Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -53063,6 +53149,161 @@
               "updatedAt": "2021-03-25T05:21:06Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 645,
+      "id": "MDExOlB1bGxSZXF1ZXN0NjA3ODQ0MTEw",
+      "title": "Split the subresource-loading explainer into the core part and the ex\u2026",
+      "url": "https://github.com/WICG/webpackage/pull/645",
+      "state": "MERGED",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026tension part (#623 #641)\r\n\r\nThis is the almost mechanical *refactoring*, splitting the\r\nsubresource-loading explainer into the core part and the extension\r\npart. The related issues are #624 and #641.\r\n\r\nIn a follow-up PR, we might want to refine the core part so that we\r\ncan write extension parts more easily, such as having well-defined\r\nterminologies and hook points.",
+      "createdAt": "2021-04-02T06:27:04Z",
+      "updatedAt": "2021-04-07T03:33:27Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "main",
+      "baseRefOid": "de6545e3c0c5d18183c01f627b9be0aaf9378e56",
+      "headRepository": "hayatoito/webpackage",
+      "headRefName": "split",
+      "headRefOid": "674ffa5ff194c6de27b518b0eb03e19317d2948d",
+      "closedAt": "2021-04-07T03:33:27Z",
+      "mergedAt": "2021-04-07T03:33:27Z",
+      "mergedBy": "hayatoito",
+      "mergeCommit": {
+        "oid": "4ec4d7d8c72deef2132e1bb51ddcff274e7b97ff"
+      },
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for the reviews. I'll merge the PR in a day.\r\n\r\n@jyasskin If you have a chance to take a look, feel free to review this!",
+          "createdAt": "2021-04-06T05:35:52Z",
+          "updatedAt": "2021-04-06T05:35:52Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI2ODUwMTM0",
+          "commit": {
+            "abbreviatedOid": "4334f0d"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-02T08:07:34Z",
+          "updatedAt": "2021-04-02T08:16:44Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "```suggestion\r\n<link\r\n```",
+              "createdAt": "2021-04-02T08:07:35Z",
+              "updatedAt": "2021-04-02T09:18:31Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "> `scope` attribute can not be used to specify `urn:uuid` resources.\r\n\r\n- `scope` -> `scopes`\r\n- This does not match the behavior of current Chromium implementation where `scopes=\"urn:\"` allows all `urn:` resources.",
+              "createdAt": "2021-04-02T08:14:34Z",
+              "updatedAt": "2021-04-02T09:18:31Z"
+            },
+            {
+              "originalPosition": 63,
+              "body": "```suggestion\r\n- `urn:uuid:` resource must be explicitly specified in `resources` attribute in\r\n```",
+              "createdAt": "2021-04-02T08:15:24Z",
+              "updatedAt": "2021-04-02T09:18:31Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI2ODgwNDc3",
+          "commit": {
+            "abbreviatedOid": "4334f0d"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-02T09:13:06Z",
+          "updatedAt": "2021-04-02T09:13:06Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "Thanks. Done.",
+              "createdAt": "2021-04-02T09:13:06Z",
+              "updatedAt": "2021-04-02T09:18:31Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI2ODgxNDgy",
+          "commit": {
+            "abbreviatedOid": "4334f0d"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-02T09:15:22Z",
+          "updatedAt": "2021-04-02T09:15:22Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "Thanks! I've updated the PR so that it matches the Chromium implementation.",
+              "createdAt": "2021-04-02T09:15:22Z",
+              "updatedAt": "2021-04-02T09:18:31Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI2ODgzMDA2",
+          "commit": {
+            "abbreviatedOid": "674ffa5"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-04-02T09:18:44Z",
+          "updatedAt": "2021-04-02T09:18:44Z",
+          "comments": [
+            {
+              "originalPosition": 63,
+              "body": "Thanks! Fixed.",
+              "createdAt": "2021-04-02T09:18:44Z",
+              "updatedAt": "2021-04-02T09:18:44Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI3NTc5Nzc3",
+          "commit": {
+            "abbreviatedOid": "674ffa5"
+          },
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm\r\n\r\nThank you.",
+          "createdAt": "2021-04-04T23:25:08Z",
+          "updatedAt": "2021-04-04T23:25:08Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjI3NTg3ODMx",
+          "commit": {
+            "abbreviatedOid": "674ffa5"
+          },
+          "author": "irori",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-04-05T01:06:19Z",
+          "updatedAt": "2021-04-05T01:06:19Z",
+          "comments": []
         }
       ]
     }
