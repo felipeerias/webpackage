@@ -841,7 +841,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Yasskin</td>
-<td class="center">Expires 9 October 2021</td>
+<td class="center">Expires 15 October 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -854,12 +854,12 @@ address div.right {
 <dd class="internet-draft">draft-yasskin-wpack-use-cases</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-04-07" class="published">7 April 2021</time>
+<time datetime="2021-04-13" class="published">13 April 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-10-09">9 October 2021</time></dd>
+<dd class="expires"><time datetime="2021-10-15">15 October 2021</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -875,15 +875,16 @@ address div.right {
 <p id="section-abstract-1">This document lists use cases for signing and/or bundling collections
 of web pages, and extracts a set of requirements from them.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
-<section class="note" id="section-note.1">
-      <h2 id="name-note-to-readers">
-<a href="#name-note-to-readers" class="section-name selfRef">Note to Readers</a>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venues">
+<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
       </h2>
-<p id="section-note.1-1">Discussion of this draft takes place on the ART area mailing list
-(art@ietf.org), which is archived
-at <a href="https://mailarchive.ietf.org/arch/search/?email_list=art">https://mailarchive.ietf.org/arch/search/?email_list=art</a>.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
-<p id="section-note.1-2">The source code and issues list for this draft can be found
-in <a href="https://github.com/WICG/webpackage">https://github.com/WICG/webpackage</a>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+  WPACK Working Group mailing list (wpack@ietf.org),
+  which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/wpack/">https://mailarchive.ietf.org/arch/browse/wpack/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+  <span><a href="https://github.com/WICG/webpackage">https://github.com/WICG/webpackage</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -904,7 +905,7 @@ in <a href="https://github.com/WICG/webpackage">https://github.com/WICG/webpacka
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 October 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 October 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -932,199 +933,199 @@ in <a href="https://github.com/WICG/webpackage">https://github.com/WICG/webpacka
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-use-cases" class="xref">Use cases</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-essential" class="xref">Essential</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.1">
                     <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-offline-installation" class="xref">Offline installation</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1.2.2">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.2">
                     <p id="section-toc.1-1.2.2.1.2.2.1" class="keepWithNext"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-offline-browsing" class="xref">Offline browsing</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1.2.3">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.3">
                     <p id="section-toc.1-1.2.2.1.2.3.1"><a href="#section-2.1.3" class="xref">2.1.3</a>.  <a href="#name-save-and-share-a-web-page" class="xref">Save and share a web page</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1.2.4">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.4">
                     <p id="section-toc.1-1.2.2.1.2.4.1"><a href="#section-2.1.4" class="xref">2.1.4</a>.  <a href="#name-privacy-preserving-prefetch" class="xref">Privacy-preserving prefetch</a></p>
 </li>
                 </ul>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-nice-to-have" class="xref">Nice-to-have</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.1">
                     <p id="section-toc.1-1.2.2.2.2.1.1"><a href="#section-2.2.1" class="xref">2.2.1</a>.  <a href="#name-packaged-web-publications" class="xref">Packaged Web Publications</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.2">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.2">
                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="xref">2.2.2</a>.  <a href="#name-avoiding-censorship" class="xref">Avoiding Censorship</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.3">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.3">
                     <p id="section-toc.1-1.2.2.2.2.3.1"><a href="#section-2.2.3" class="xref">2.2.3</a>.  <a href="#name-third-party-security-review" class="xref">Third-party security review</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.4">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.4">
                     <p id="section-toc.1-1.2.2.2.2.4.1"><a href="#section-2.2.4" class="xref">2.2.4</a>.  <a href="#name-building-packages-from-mult" class="xref">Building packages from multiple libraries</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.5">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.5">
                     <p id="section-toc.1-1.2.2.2.2.5.1"><a href="#section-2.2.5" class="xref">2.2.5</a>.  <a href="#name-cross-cdn-serving" class="xref">Cross-CDN Serving</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.6">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.6">
                     <p id="section-toc.1-1.2.2.2.2.6.1"><a href="#section-2.2.6" class="xref">2.2.6</a>.  <a href="#name-pre-installed-applications" class="xref">Pre-installed applications</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.7">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.7">
                     <p id="section-toc.1-1.2.2.2.2.7.1"><a href="#section-2.2.7" class="xref">2.2.7</a>.  <a href="#name-protecting-users-from-a-com" class="xref">Protecting Users from a Compromised Frontend</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.8">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.8">
                     <p id="section-toc.1-1.2.2.2.2.8.1"><a href="#section-2.2.8" class="xref">2.2.8</a>.  <a href="#name-installation-from-a-self-ex" class="xref">Installation from a self-extracting executable</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.9">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.9">
                     <p id="section-toc.1-1.2.2.2.2.9.1"><a href="#section-2.2.9" class="xref">2.2.9</a>.  <a href="#name-packages-in-version-control" class="xref">Packages in version control</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.10">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.10">
                     <p id="section-toc.1-1.2.2.2.2.10.1"><a href="#section-2.2.10" class="xref">2.2.10</a>. <a href="#name-subresource-bundling" class="xref">Subresource bundling</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2.2.11">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.11">
                     <p id="section-toc.1-1.2.2.2.2.11.1"><a href="#section-2.2.11" class="xref">2.2.11</a>. <a href="#name-archival" class="xref">Archival</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-requirements" class="xref">Requirements</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-essential-2" class="xref">Essential</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.1">
                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="xref">3.1.1</a>.  <a href="#name-indexed-by-url" class="xref">Indexed by URL</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.2">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.2">
                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="xref">3.1.2</a>.  <a href="#name-request-headers" class="xref">Request headers</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.3">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.3">
                     <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="xref">3.1.3</a>.  <a href="#name-response-headers" class="xref">Response headers</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.4">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.4">
                     <p id="section-toc.1-1.3.2.1.2.4.1"><a href="#section-3.1.4" class="xref">3.1.4</a>.  <a href="#name-signing-as-an-origin" class="xref">Signing as an origin</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.5">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.5">
                     <p id="section-toc.1-1.3.2.1.2.5.1"><a href="#section-3.1.5" class="xref">3.1.5</a>.  <a href="#name-random-access" class="xref">Random access</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.6">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.6">
                     <p id="section-toc.1-1.3.2.1.2.6.1"><a href="#section-3.1.6" class="xref">3.1.6</a>.  <a href="#name-resources-from-multiple-ori" class="xref">Resources from multiple origins in a package</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.7">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.7">
                     <p id="section-toc.1-1.3.2.1.2.7.1"><a href="#section-3.1.7" class="xref">3.1.7</a>.  <a href="#name-cryptographic-agility" class="xref">Cryptographic agility</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.8">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.8">
                     <p id="section-toc.1-1.3.2.1.2.8.1"><a href="#section-3.1.8" class="xref">3.1.8</a>.  <a href="#name-unsigned-content" class="xref">Unsigned content</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.9">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.9">
                     <p id="section-toc.1-1.3.2.1.2.9.1"><a href="#section-3.1.9" class="xref">3.1.9</a>.  <a href="#name-certificate-revocation" class="xref">Certificate revocation</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.10">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.10">
                     <p id="section-toc.1-1.3.2.1.2.10.1"><a href="#section-3.1.10" class="xref">3.1.10</a>. <a href="#name-downgrade-prevention" class="xref">Downgrade prevention</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.11">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.11">
                     <p id="section-toc.1-1.3.2.1.2.11.1"><a href="#section-3.1.11" class="xref">3.1.11</a>. <a href="#name-metadata" class="xref">Metadata</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1.2.12">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1.2.12">
                     <p id="section-toc.1-1.3.2.1.2.12.1"><a href="#section-3.1.12" class="xref">3.1.12</a>. <a href="#name-implementations-are-hard-to" class="xref">Implementations are hard to get wrong</a></p>
 </li>
                 </ul>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-nice-to-have-2" class="xref">Nice to have</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.1">
                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-streamed-loading" class="xref">Streamed loading</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.2">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.2">
                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-signing-without-origin-trus" class="xref">Signing without origin trust</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.3">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.3">
                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-additional-signatures" class="xref">Additional signatures</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.4">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.4">
                     <p id="section-toc.1-1.3.2.2.2.4.1"><a href="#section-3.2.4" class="xref">3.2.4</a>.  <a href="#name-binary" class="xref">Binary</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.5">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.5">
                     <p id="section-toc.1-1.3.2.2.2.5.1"><a href="#section-3.2.5" class="xref">3.2.5</a>.  <a href="#name-deduplication-of-diamond-de" class="xref">Deduplication of diamond dependencies</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.6">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.6">
                     <p id="section-toc.1-1.3.2.2.2.6.1"><a href="#section-3.2.6" class="xref">3.2.6</a>.  <a href="#name-old-crypto-can-be-removed" class="xref">Old crypto can be removed</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.7">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.7">
                     <p id="section-toc.1-1.3.2.2.2.7.1"><a href="#section-3.2.7" class="xref">3.2.7</a>.  <a href="#name-compress-transfers" class="xref">Compress transfers</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.8">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.8">
                     <p id="section-toc.1-1.3.2.2.2.8.1"><a href="#section-3.2.8" class="xref">3.2.8</a>.  <a href="#name-compress-stored-packages" class="xref">Compress stored packages</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.9">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.9">
                     <p id="section-toc.1-1.3.2.2.2.9.1"><a href="#section-3.2.9" class="xref">3.2.9</a>.  <a href="#name-subsetting-and-reordering" class="xref">Subsetting and reordering</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.10">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.10">
                     <p id="section-toc.1-1.3.2.2.2.10.1"><a href="#section-3.2.10" class="xref">3.2.10</a>. <a href="#name-packaged-validity-informati" class="xref">Packaged validity information</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.11">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.11">
                     <p id="section-toc.1-1.3.2.2.2.11.1"><a href="#section-3.2.11" class="xref">3.2.11</a>. <a href="#name-signing-uses-existing-tls-c" class="xref">Signing uses existing TLS certificates</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.12">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.12">
                     <p id="section-toc.1-1.3.2.2.2.12.1"><a href="#section-3.2.12" class="xref">3.2.12</a>. <a href="#name-external-dependencies" class="xref">External dependencies</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.13">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.13">
                     <p id="section-toc.1-1.3.2.2.2.13.1"><a href="#section-3.2.13" class="xref">3.2.13</a>. <a href="#name-trailing-length" class="xref">Trailing length</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.14">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.14">
                     <p id="section-toc.1-1.3.2.2.2.14.1"><a href="#section-3.2.14" class="xref">3.2.14</a>. <a href="#name-time-shifting-execution" class="xref">Time-shifting execution</a></p>
 </li>
-                  <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2.2.15">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.15">
                     <p id="section-toc.1-1.3.2.2.2.15.1"><a href="#section-3.2.15" class="xref">3.2.15</a>. <a href="#name-service-worker-integration" class="xref">Service Worker integration</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-non-goals" class="xref">Non-goals</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-store-confidential-data" class="xref">Store confidential data</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-generate-packages-on-the-fl" class="xref">Generate packages on the fly</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-non-origin-identity" class="xref">Non-origin identity</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.4">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-drm" class="xref">DRM</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.5">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-ergonomic-replacement-for-h" class="xref">Ergonomic replacement for HTTP/2 PUSH</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.9">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
 </li>
         </ul>

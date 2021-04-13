@@ -5,7 +5,7 @@
 Network Working Group                                         J. Yasskin
 Internet-Draft                                               K. Sakamoto
 Intended status: Standards Track                                  Google
-Expires: 9 October 2021                                     7 April 2021
+Expires: 15 October 2021                                   13 April 2021
 
 
             Signed HTTP Exchanges Implementation Checkpoints
@@ -17,16 +17,16 @@ Abstract
    signed-responses to synchronize implementation between clients,
    intermediates, and publishers.
 
-Note to Readers
+Discussion Venues
 
-   Discussion of this draft takes place on the HTTP working group
-   mailing list (ietf-http-wg@w3.org), which is archived at
-   https://lists.w3.org/Archives/Public/ietf-http-wg/
-   (https://lists.w3.org/Archives/Public/ietf-http-wg/).
+   This note is to be removed before publishing as an RFC.
 
-   The source code and issues list for this draft can be found in
-   https://github.com/WICG/webpackage (https://github.com/WICG/
-   webpackage).
+   Discussion of this document takes place on the WPACK Working Group
+   mailing list (wpack@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/wpack/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/WICG/webpackage.
 
 Status of This Memo
 
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 October 2021.
+   This Internet-Draft will expire on 15 October 2021.
 
 Copyright Notice
 
