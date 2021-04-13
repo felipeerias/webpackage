@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-04-07T17:34:20.777272+00:00",
+  "timestamp": "2021-04-13T19:39:33.456826+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -10002,9 +10002,17 @@
       "labels": [],
       "body": "Primary URL does not make much sense as a concept for some uses of resource bundles (e.g., for subresource loading). I'd propose that it be a separate, optional section (like `manifest`), not a required field for all usages.",
       "createdAt": "2021-02-08T20:12:13Z",
-      "updatedAt": "2021-02-08T20:12:13Z",
+      "updatedAt": "2021-04-08T05:10:59Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for filing an issue!\r\n+1 to make primary URL optional because it doesn't make sense in some use cases.",
+          "createdAt": "2021-04-08T05:10:59Z",
+          "updatedAt": "2021-04-08T05:10:59Z"
+        }
+      ]
     },
     {
       "number": 620,
@@ -10358,6 +10366,57 @@
           "updatedAt": "2021-04-03T08:10:59Z"
         }
       ]
+    },
+    {
+      "number": 647,
+      "id": "MDU6SXNzdWU4NTMwNjA4MjI=",
+      "title": "Support a relative URL of a resource in a bundle.",
+      "url": "https://github.com/WICG/webpackage/issues/647",
+      "state": "OPEN",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "subresource-loading"
+      ],
+      "body": "It might be worth considering to support a relative URL in the bundle format.\r\n\r\nI've heard this feature request from several people. I've searched an existing issue, but I couldn't find one so let me file an issue.\r\n\r\nUse cases:\r\n\r\nRegarding [subresource loading](https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading.md) use case, we use the following syntax in the main doc:\r\n\r\n```html\r\n<link rel=webundle href=https://example.com/app/bundle.wbn resources=\".....\">\r\n```\r\n\r\nBecause we have *path restriction*, the resources in the bundle *must* start with `https://example.com/app/`, such as:\r\n\r\n- https://example.com/app/top.js\r\n- https://example.com/app/util1.js\r\n- https://example.com/app/util2.js\r\n- ...\r\n\r\nIt seems a bit redundant.  If we support a relative URL, each subresource doesn't have to include a redundant common prefix, and can be:\r\n\r\n- ./top.js\r\n- ./util1.js\r\n- ./util2.js\r\n- ...\r\n\r\nWe have to decide on which `base` a relative URL should be resolved. For subresource loading use cases, it's clear. \r\nFor other use cases, TBD. \r\n\r\nThe other benefits are:\r\n\r\n- A bundle can be more portable. For example, we can move `bundle.wbn` from https://example.com/app/ to https://example.com/other/, freely, without re-creating a bundle.\r\n- The size of a bundle can be reduced.  \r\n\r\n",
+      "createdAt": "2021-04-08T05:00:23Z",
+      "updatedAt": "2021-04-08T17:27:59Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://github.com/WICG/webpackage/pull/617 can be related. We need to make primary URL optional.",
+          "createdAt": "2021-04-08T05:13:44Z",
+          "updatedAt": "2021-04-08T05:14:17Z"
+        },
+        {
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "body": "Yep, I think we do this by either\r\n1. putting the base URL in a section (possibly one holding a map of several metadata values), or\r\n2. using the bundle's URL as the base.",
+          "createdAt": "2021-04-08T17:27:58Z",
+          "updatedAt": "2021-04-08T17:27:58Z"
+        }
+      ]
+    },
+    {
+      "number": 648,
+      "id": "MDU6SXNzdWU4NTQzNzg3MzY=",
+      "title": "[Meta] A long term plan for subresource loading",
+      "url": "https://github.com/WICG/webpackage/issues/648",
+      "state": "OPEN",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "subresource-loading"
+      ],
+      "body": "Hi folks!\r\n\r\nLet us share the current status and a future plan about [Subresource Loading with Web Bundles].\r\n\r\n## Status:\r\n\r\n- We're starting an origin trial in Chrome (M90 - M92). [Landing page].\r\n\r\nIf we don't find any significant issue in OT and this feature is promising, as the next step, we'll work on addressing any\r\nblocking issues or support feature requests, considering feedback from OT, so that we can ship\r\nMVP (*v1*).\r\n\r\n## Tentative plan (No ETA):\r\n\r\nNote: The following mentions only *features*. Any standard works or other tasks are not included.\r\n\r\n### v1 (We consider MVP should be shipped with these features)\r\n\r\n- [ ] The core part: [Subresource Loading with Web Bundles]\r\n- [ ] The extension: [Support opaque origin iframes]\r\n  - [ ] Change urn:uuid to other scheme (TODO: File an issue)\r\n- [ ] Make primary URL optional (#616)\r\n  - [ ] Needs to update the bundle format.\r\n- [ ] Support a relative URL of a resource in a bundle (#647)\r\n  - [ ] Needs to update the bundle format?\r\n- [ ] New syntax: Use `<script>` tag and define its scheme\r\n  - [ ] TODO: File an issue.\r\n- [ ] CORP and COEP (#644)\r\n- [ ] Increment the bundle format version?\r\n\r\n### v2 (We consider these are important, but not absolutely required for shipping MVP)\r\n\r\n- [ ] Subsetting ([Resource Batch Preloading], [Resource Bundles])\r\n  - [Chromium side design doc](https://docs.google.com/document/d/159wbsjWh13xpwZbK-4LNNHcbtRROiXAJSabunJXWEzs/edit), based on [Resource Bundles] proposal.\r\n\r\n### v3 (Strawperson ideas, which are not triaged well yet)\r\n\r\n- [ ] Use the index section as an alternative of a \u201cresources=\u201d attribute value\r\n  ([cab] mentions this)\r\n  - [ ] TODO: File an issue on GitHub.\r\n- [ ] Declare dependencies to external bundles (#596, #40, [cab])\r\n  - [ ] Needs to update the bundle format\r\n- [ ] Resource Hints with webbundle\r\n  - `<link rel=prefetch-for-navigation href=\u201d//example.com/nextpage.wbn\u201d page=\u201d//example.com/nextpage.html\u201d>`\r\n  - [ ] Needs a concrete proposal.\r\n- [ ] [Content Addressable Bundles]\r\n\r\nWe'll try to keep this plan up-to-date.\r\n\r\n[subresource loading with web bundles]:\r\n  https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading.md\r\n[support opaque origin iframes]:\r\n  https://github.com/WICG/webpackage/blob/main/explainers/subresource-loading-opaque-origin-iframes.md\r\n[landing page]:\r\n  https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/content/browser/web_package/subresource_loading_origin_trial.md\r\n[cab]:\r\n  https://github.com/hayatoito/webpackage/blob/content-addressable-bundles/explainers/content-addressable-bundles.md\r\n[content addressable bundles]:\r\n  https://github.com/hayatoito/webpackage/blob/content-addressable-bundles/explainers/content-addressable-bundles.md\r\n[resource batch preloading]:\r\n  https://gist.github.com/littledan/e01801001c277b0be03b1ca54788505e\r\n[resource bundles]: https://github.com/WICG/resource-bundles\r\n",
+      "createdAt": "2021-04-09T10:06:41Z",
+      "updatedAt": "2021-04-09T10:13:07Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -53338,7 +53397,7 @@
       "labels": [],
       "body": "Update the TOC and fix a link to the extension doc.",
       "createdAt": "2021-04-07T06:53:13Z",
-      "updatedAt": "2021-04-07T17:26:44Z",
+      "updatedAt": "2021-04-08T00:18:49Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "main",
       "baseRefOid": "4ec4d7d8c72deef2132e1bb51ddcff274e7b97ff",
@@ -53377,6 +53436,19 @@
           "body": "",
           "createdAt": "2021-04-07T17:26:27Z",
           "updatedAt": "2021-04-07T17:26:27Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjMwODgxMzIx",
+          "commit": {
+            "abbreviatedOid": "6c6fc89"
+          },
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "lgtm",
+          "createdAt": "2021-04-08T00:18:49Z",
+          "updatedAt": "2021-04-08T00:18:49Z",
           "comments": []
         }
       ]
